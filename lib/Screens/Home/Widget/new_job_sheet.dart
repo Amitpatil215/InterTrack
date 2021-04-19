@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Controller/addNewJobApplication.dart';
 import 'package:intertrack/Utils/utils.dart';
@@ -12,6 +13,7 @@ class NewJobSheet extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: Responsive().smallW),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -34,6 +36,8 @@ class NewJobSheet extends StatelessWidget {
               floatingLabelBehavior: FloatingLabelBehavior.never,
             ),
           ),
+          SizedBox(height: Responsive().smallH),
+          SubCategoryTitle(FontAwesomeIcons.clock, "Date Of Application"),
           ListTile(
             title: GestureDetector(
               onTap: () async {
@@ -59,8 +63,57 @@ class NewJobSheet extends StatelessWidget {
               }),
             ),
           ),
+          Divider(),
+          SizedBox(height: Responsive().smallH),
+          SubCategoryTitle(FontAwesomeIcons.graduationCap, "Job Description"),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: "Position",
+              labelStyle: TextStyle(
+                fontSize: Responsive().mediumW,
+              ),
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+            ),
+          ),
+          SizedBox(height: Responsive().smallH),
+          SubCategoryTitle(FontAwesomeIcons.affiliatetheme, "Status"),
+          CheckboxListTile(
+            value: true,
+            title: Text('Application Submitted'),
+            onChanged: (val) {},
+          ),
+          TextFormField(
+            decoration: inputDecoration(labelText: 'Under Review'),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class SubCategoryTitle extends StatelessWidget {
+  const SubCategoryTitle(
+    this.icondata,
+    this.title,
+  );
+
+  final IconData icondata;
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        FaIcon(icondata),
+        SizedBox(
+          width: Responsive().smallW,
+        ),
+        Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
     );
   }
 }

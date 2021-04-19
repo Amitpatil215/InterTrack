@@ -11,6 +11,7 @@ class JobApplication {
 
   /// e.g. under review
   final String statusLabel;
+  final bool isApplied;
 
   /// e.g. phone screening
   final List<Stage> stages;
@@ -24,6 +25,7 @@ class JobApplication {
     this.expectedDate,
     this.dateOfApplication,
     this.statusLabel = '',
+    this.isApplied = false,
     this.stages = const [],
   });
 }
