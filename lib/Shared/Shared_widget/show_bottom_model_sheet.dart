@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Future showCustomBottomModelSheet(
-    BuildContext context,Widget child) {
+Future showCustomBottomModelSheet(BuildContext context, Widget child) {
   return showModalBottomSheet(
     isScrollControlled: true,
     context: context,
