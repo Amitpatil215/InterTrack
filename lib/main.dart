@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intertrack/Screens/home_screen.dart';
+import 'package:intertrack/Screens/Home/home_screen.dart';
 
 void main() {
   runApp(MyApp());
