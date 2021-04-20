@@ -26,6 +26,7 @@ class HiringStagesCard extends StatelessWidget {
           scheduledOn: _controller.pickedStageDate.value,
         ),
       );
+      _controller.editThisStagebyId.value = '';
     }
   }
 
