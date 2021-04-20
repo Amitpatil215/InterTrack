@@ -20,9 +20,12 @@ class HiringStagesCard extends StatelessWidget {
   _onSaved() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      print(_stageTitle);
-      _controller
-          .addNewStage(Stage(title: _stageTitle, scheduledOn: DateTime.now()));
+      _controller.addNewStage(
+        Stage(
+          title: _stageTitle,
+          scheduledOn: _controller.pickedStageDate.value,
+        ),
+      );
     }
   }
 
@@ -33,6 +36,7 @@ class HiringStagesCard extends StatelessWidget {
       child: Obx(() {
         return ListView.builder(
           shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           itemCount: _controller.jobApplication.value?.stages.length,
           itemBuilder: (context, index) {
             return Column(
@@ -98,29 +102,25 @@ class HiringStagesCard extends StatelessWidget {
                       children: [
                         ListTile(
                           contentPadding: EdgeInsets.all(0),
-                          title: GestureDetector(
-                            onTap: () async {
-                              await _pickDate(context);
-                            },
-                            child: Form(
-                              key: _formKey,
-                              child: TextFormField(
-                                onSaved: (val) {
-                                  _stageTitle = val ?? '';
-                                },
-                                decoration: inputDecoration(
-                                    labelText: 'Phone Screening'),
-                              ),
+                          title: Form(
+                            key: _formKey,
+                            child: TextFormField(
+                              onSaved: (val) {
+                                _stageTitle = val ?? '';
+                              },
+                              decoration:
+                                  inputDecoration(labelText: 'Phone Screening'),
                             ),
                           ),
                           trailing: GestureDetector(
                             onTap: () async {
-                              await _pickDate(context);
+                              _controller.pickedStageDate.value =
+                                  await _pickDate(context);
                             },
                             child: Obx(() {
                               return Text(
                                 formatDate(
-                                  _controller.startDateTime.value ??
+                                  _controller.pickedStageDate.value ??
                                       DateTime.now(),
                                 ),
                               );

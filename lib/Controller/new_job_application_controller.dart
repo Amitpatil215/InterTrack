@@ -21,7 +21,9 @@ class NewJobApplicationController extends GetxController {
     )
   ]).obs;
 
-  RxString editThisStagebyId = '1'.obs;
+  Rx<DateTime> pickedStageDate = DateTime.now().obs;
+
+  RxString editThisStagebyId = ''.obs;
 
   setEditThiStageById(String id) {
     if (editThisStagebyId.value == id) {
