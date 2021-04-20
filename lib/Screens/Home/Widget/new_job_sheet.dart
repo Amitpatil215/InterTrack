@@ -11,81 +11,93 @@ class NewJobSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: Responsive().smallW),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(CupertinoIcons.multiply),
-              Spacer(),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Save',
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(CupertinoIcons.multiply),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                 ),
-              )
-            ],
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "Company Name",
-              labelStyle: TextStyle(
-                fontSize: Responsive().largeW,
-              ),
-              floatingLabelBehavior: FloatingLabelBehavior.never,
-            ),
-          ),
-          SizedBox(height: Responsive().smallH),
-          SubCategoryTitle(FontAwesomeIcons.clock, "Date Of Application"),
-          ListTile(
-            title: GestureDetector(
-              onTap: () async {
-                await pickDate(context);
-              },
-              child: Obx(() {
-                return Text(
-                  formatDate(
-                    _controller?.startDateTime.value ?? DateTime.now(),
+                Spacer(),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Save',
                   ),
-                );
-              }),
+                )
+              ],
             ),
-            trailing: GestureDetector(
-              onTap: () async {
-                await pickTime(context);
-              },
-              child: Obx(() {
-                return Text(
-                  formatTime(
-                      _controller?.startDateTime.value ?? DateTime.now()),
-                );
-              }),
-            ),
-          ),
-          Divider(),
-          SizedBox(height: Responsive().smallH),
-          SubCategoryTitle(FontAwesomeIcons.graduationCap, "Job Description"),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "Position",
-              labelStyle: TextStyle(
-                fontSize: Responsive().mediumW,
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: "Company Name",
+                labelStyle: TextStyle(
+                  fontSize: Responsive().largeW,
+                ),
+                floatingLabelBehavior: FloatingLabelBehavior.never,
               ),
-              floatingLabelBehavior: FloatingLabelBehavior.never,
             ),
-          ),
-          SizedBox(height: Responsive().smallH),
-          SubCategoryTitle(FontAwesomeIcons.affiliatetheme, "Status"),
-          CheckboxListTile(
-            value: true,
-            title: Text('Application Submitted'),
-            onChanged: (val) {},
-          ),
-          TextFormField(
-            decoration: inputDecoration(labelText: 'Under Review'),
-          ),
-        ],
+            SizedBox(height: Responsive().smallH),
+            SubCategoryTitle(FontAwesomeIcons.clock, "Date Of Application"),
+            ListTile(
+              title: GestureDetector(
+                onTap: () async {
+                  await pickDate(context);
+                },
+                child: Obx(() {
+                  return Text(
+                    formatDate(
+                      _controller?.startDateTime.value ?? DateTime.now(),
+                    ),
+                  );
+                }),
+              ),
+              trailing: GestureDetector(
+                onTap: () async {
+                  await pickTime(context);
+                },
+                child: Obx(() {
+                  return Text(
+                    formatTime(
+                        _controller?.startDateTime.value ?? DateTime.now()),
+                  );
+                }),
+              ),
+            ),
+            Divider(),
+            SizedBox(height: Responsive().smallH),
+            SubCategoryTitle(FontAwesomeIcons.graduationCap, "Job Description"),
+            Row(
+              children: [
+                Chip(label: Text('Full Time')),
+                SizedBox(width: Responsive().smallW),
+                Chip(label: Text('Part Time'))
+              ],
+            ),
+            TextFormField(
+              decoration: inputDecoration(labelText: 'Position'),
+            ),
+            SizedBox(height: Responsive().smallH),
+            TextFormField(
+              decoration: inputDecoration(labelText: 'Location Remote'),
+            ),
+            SizedBox(height: Responsive().smallH),
+            SubCategoryTitle(FontAwesomeIcons.affiliatetheme, "Status"),
+            CheckboxListTile(
+              value: true,
+              title: Text('Application Submitted'),
+              onChanged: (val) {},
+            ),
+            TextFormField(
+              decoration: inputDecoration(labelText: 'Under Review'),
+            ),
+          ],
+        ),
       ),
     );
   }
