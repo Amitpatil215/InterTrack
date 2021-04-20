@@ -121,37 +121,53 @@ class NewJobSheet extends StatelessWidget {
               Divider(),
               SubCategoryTitle(
                   FontAwesomeIcons.hourglassStart, "Hiring Stages"),
-              TimelineTile(
-                alignment: TimelineAlign.start,
-                lineXY: 0.5,
-                indicatorStyle: IndicatorStyle(),
-                isFirst: true,
-                endChild: SizedBox(
-                  height: Responsive().extraLargeH,
-                  child: Center(
-                    child: Row(
-                      children: [
-                        Text('Telephonic Interview'),
-                        Spacer(),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              TimelineTile(
-                alignment: TimelineAlign.start,
-                lineXY: 0.5,
-                indicatorStyle: IndicatorStyle(),
-                endChild: SizedBox(
-                  height: Responsive().extraLargeH,
-                  child: Center(
-                    child: Row(
-                      children: [
-                        Text('Telephonic Interview'),
-                        Spacer(),
-                      ],
-                    ),
-                  ),
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: Responsive().extraLargeW),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return TimelineTile(
+                      alignment: TimelineAlign.manual,
+                      lineXY: 0.25,
+                      beforeLineStyle: LineStyle(
+                        thickness: Responsive().width * 0.004,
+                        color: Colors.black,
+                      ),
+                      indicatorStyle: IndicatorStyle(
+                          drawGap: true,
+                          color: Colors.transparent,
+                          iconStyle: IconStyle(
+                            iconData: Icons.adjust,
+                            fontSize: Responsive().extraLargeW,
+                          )),
+                      isFirst: index == 0,
+                      startChild: SizedBox(
+                        height: Responsive().smallH,
+                        child: Text(
+                          'Tue, 20 Apr',
+                          style: TextStyle(
+                            fontSize: Responsive().mediumW,
+                          ),
+                        ),
+                      ),
+                      endChild: SizedBox(
+                        height: Responsive().extraLargeH,
+                        child: Center(
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: Responsive().smallW,
+                              ),
+                              Text('Telephonic Interview'),
+                              Spacer(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               ListTile(
@@ -177,6 +193,19 @@ class NewJobSheet extends StatelessWidget {
                   }),
                 ),
               ),
+              Row(
+                children: [
+                  Spacer(),
+                  TextButton.icon(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.add,
+                      size: Responsive().extraLargeW,
+                    ),
+                    label: Text('Stage'),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -197,7 +226,10 @@ class SubCategoryTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        FaIcon(icondata),
+        FaIcon(
+          icondata,
+          size: Responsive().largeW,
+        ),
         SizedBox(
           width: Responsive().smallW,
         ),
