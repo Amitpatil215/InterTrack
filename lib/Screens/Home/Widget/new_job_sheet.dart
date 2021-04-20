@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 import 'package:intertrack/Controller/addNewJobApplication.dart';
 import 'package:intertrack/Utils/utils.dart';
 
@@ -99,7 +100,7 @@ class NewJobSheet extends StatelessWidget {
               decoration: inputDecoration(labelText: 'Location Remote'),
             ),
             SizedBox(height: Responsive().smallH),
-            SubCategoryTitle(FontAwesomeIcons.affiliatetheme, "Status"),
+            SubCategoryTitle(FontAwesomeIcons.eye, "Status"),
             CheckboxListTile(
               value: true,
               title: Text('Application Submitted'),
@@ -107,6 +108,64 @@ class NewJobSheet extends StatelessWidget {
             ),
             TextFormField(
               decoration: inputDecoration(labelText: 'Under Review'),
+            ),
+            SizedBox(height: Responsive().smallH),
+            SubCategoryTitle(FontAwesomeIcons.hourglassStart, "Hiring Stages"),
+            TimelineTile(
+              alignment: TimelineAlign.start,
+              lineXY: 0.5,
+              indicatorStyle: IndicatorStyle(),
+              isFirst: true,
+              endChild: SizedBox(
+                height: Responsive().extraLargeH,
+                child: Center(
+                  child: Row(
+                    children: [
+                      Text('Telephonic Interview'),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            TimelineTile(
+              alignment: TimelineAlign.start,
+              lineXY: 0.5,
+              indicatorStyle: IndicatorStyle(),
+              endChild: SizedBox(
+                height: Responsive().extraLargeH,
+                child: Center(
+                  child: Row(
+                    children: [
+                      Text('Telephonic Interview'),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.all(0),
+              title: GestureDetector(
+                onTap: () async {
+                  await pickDate(context);
+                },
+                child: TextFormField(
+                  decoration: inputDecoration(labelText: 'Phone Screening'),
+                ),
+              ),
+              trailing: GestureDetector(
+                onTap: () async {
+                  await pickDate(context);
+                },
+                child: Obx(() {
+                  return Text(
+                    formatDate(
+                      _controller?.startDateTime.value ?? DateTime.now(),
+                    ),
+                  );
+                }),
+              ),
             ),
           ],
         ),
