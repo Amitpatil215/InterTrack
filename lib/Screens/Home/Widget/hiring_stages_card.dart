@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intertrack/Controller/addNewJobApplication.dart';
+import 'package:intertrack/Controller/JobApplication.dart';
 import 'package:intertrack/Utils/utils.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class HiringStagesCard extends StatelessWidget {
   const HiringStagesCard({
     Key? key,
-    required AddNewJobApplicationController? controller,
+    required JobApplicationController? controller,
   })   : _controller = controller,
         super(key: key);
 
-  final AddNewJobApplicationController? _controller;
+  final JobApplicationController? _controller;
 
   @override
   Widget build(BuildContext context) {

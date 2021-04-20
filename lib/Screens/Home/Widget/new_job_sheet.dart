@@ -3,12 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:intertrack/Screens/Home/Widget/application_status_card.dart';
 import 'package:intertrack/Screens/Home/Widget/home_screen_widgets.dart';
-import 'package:intertrack/Controller/addNewJobApplication.dart';
+import 'package:intertrack/Controller/JobApplication.dart';
 import 'package:intertrack/Utils/utils.dart';
 
 class NewJobSheet extends StatelessWidget {
-  final _controller = Get.put(AddNewJobApplicationController());
+  final _controller = Get.put(JobApplicationController());
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
@@ -109,14 +110,7 @@ class NewJobSheet extends StatelessWidget {
               SizedBox(height: Responsive().smallH),
               Divider(),
               SubCategoryTitle(FontAwesomeIcons.eye, "Status"),
-              CheckboxListTile(
-                value: true,
-                title: Text('Application Submitted'),
-                onChanged: (val) {},
-              ),
-              TextFormField(
-                decoration: inputDecoration(labelText: 'Under Review'),
-              ),
+              ApplicationStatusCard(),
               SizedBox(height: Responsive().smallH),
               Divider(),
               SubCategoryTitle(
