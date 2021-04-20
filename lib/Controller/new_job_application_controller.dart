@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:uuid/uuid.dart';
 import 'package:intertrack/Model/JobApplication.dart';
 
 enum eventFrequency { noRepeat, everyWeek }
@@ -20,7 +21,7 @@ class NewJobApplicationController extends GetxController {
     )
   ]).obs;
 
-  var editThisStagebyId = '1'.obs;
+  RxString editThisStagebyId = '1'.obs;
 
   setEditThiStageById(String id) {
     if (editThisStagebyId.value == id) {
@@ -28,5 +29,14 @@ class NewJobApplicationController extends GetxController {
       return;
     }
     editThisStagebyId.value = id;
+  }
+
+  addNewStage(Stage stage) {
+    jobApplication.value?.stages.add(Stage(
+      id: Uuid().v1(),
+      scheduledOn: stage.scheduledOn,
+      title: stage.title,
+    ));
+    jobApplication.refresh();
   }
 }

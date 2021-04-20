@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Controller/new_job_application_controller.dart';
+import 'package:intertrack/Model/JobApplication.dart';
 import 'package:intertrack/Utils/utils.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
+// ignore: must_be_immutable
 class HiringStagesCard extends StatelessWidget {
-  const HiringStagesCard({
+  HiringStagesCard({
     Key? key,
     required NewJobApplicationController controller,
   })   : _controller = controller,
         super(key: key);
 
   final NewJobApplicationController _controller;
+  final _formKey = GlobalKey<FormState>();
+  String _stageTitle = '';
+
+  _onSaved() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      print(_stageTitle);
+      _controller
+          .addNewStage(Stage(title: _stageTitle, scheduledOn: DateTime.now()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +74,11 @@ class HiringStagesCard extends StatelessWidget {
                             width: Responsive().smallW,
                           ),
                           GestureDetector(
-                            child: Text(_controller.jobApplication.value
-                                    ?.stages[index].title ??
-                                ''),
+                            child: Obx(() {
+                              return Text(_controller.jobApplication.value
+                                      ?.stages[index].title ??
+                                  '');
+                            }),
                             onTap: () {
                               _controller.setEditThiStageById(_controller
                                       .jobApplication.value?.stages[index].id ??
@@ -87,9 +102,15 @@ class HiringStagesCard extends StatelessWidget {
                             onTap: () async {
                               await _pickDate(context);
                             },
-                            child: TextFormField(
-                              decoration:
-                                  inputDecoration(labelText: 'Phone Screening'),
+                            child: Form(
+                              key: _formKey,
+                              child: TextFormField(
+                                onSaved: (val) {
+                                  _stageTitle = val ?? '';
+                                },
+                                decoration: inputDecoration(
+                                    labelText: 'Phone Screening'),
+                              ),
                             ),
                           ),
                           trailing: GestureDetector(
@@ -110,7 +131,7 @@ class HiringStagesCard extends StatelessWidget {
                           children: [
                             Spacer(),
                             OutlinedButton(
-                              onPressed: () {},
+                              onPressed: _onSaved,
                               child: Text('Add'),
                             ),
                           ],
