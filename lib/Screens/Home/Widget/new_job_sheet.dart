@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:intertrack/Controller/new_job_application_controller.dart';
 import 'package:intertrack/Screens/Home/Widget/application_status_card.dart';
 import 'package:intertrack/Screens/Home/Widget/home_screen_widgets.dart';
 import 'package:intertrack/Controller/JobApplication.dart';
@@ -10,6 +11,7 @@ import 'package:intertrack/Utils/utils.dart';
 
 class NewJobSheet extends StatelessWidget {
   final _controller = Get.put(JobApplicationController());
+  final _newJobApplicationController = Get.put(NewJobApplicationController());
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
@@ -115,7 +117,8 @@ class NewJobSheet extends StatelessWidget {
               Divider(),
               SubCategoryTitle(
                   FontAwesomeIcons.hourglassStart, "Hiring Stages"),
-              HiringStagesCard(controller: _controller),
+              HiringStagesCard(controller: _newJobApplicationController!),
+              SizedBox(height: Responsive().extraLargeH)
             ],
           ),
         ),
