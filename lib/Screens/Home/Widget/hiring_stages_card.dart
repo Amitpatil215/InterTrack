@@ -39,6 +39,9 @@ class HiringStagesCard extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           itemCount: _controller.jobApplication.value?.stages.length,
           itemBuilder: (context, index) {
+            var _sortedStagesbyDate = _controller.jobApplication.value?.stages;
+            _sortedStagesbyDate
+                ?.sort((a, b) => a.scheduledOn!.compareTo(b.scheduledOn!));
             return Column(
               children: [
                 TimelineTile(
