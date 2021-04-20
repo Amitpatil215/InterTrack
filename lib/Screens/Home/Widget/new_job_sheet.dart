@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -72,12 +73,23 @@ class NewJobSheet extends StatelessWidget {
             Divider(),
             SizedBox(height: Responsive().smallH),
             SubCategoryTitle(FontAwesomeIcons.graduationCap, "Job Description"),
-            Row(
-              children: [
-                Chip(label: Text('Full Time')),
-                SizedBox(width: Responsive().smallW),
-                Chip(label: Text('Part Time'))
-              ],
+            Container(
+              height: Responsive().extraLargeH,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: JobType.values.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: Responsive().tinyW),
+                    child: Chip(
+                      label: Text(
+                        describeEnum(JobType.values[index]),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
             TextFormField(
               decoration: inputDecoration(labelText: 'Position'),
