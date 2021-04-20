@@ -39,13 +39,15 @@ class NewJobSheet extends StatelessWidget {
               ),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: "Company Name",
-                  labelStyle: TextStyle(
-                    fontSize: Responsive().largeW,
+                  hintStyle: TextStyle(
+                    fontSize: Responsive().extraLargeW,
                   ),
                   floatingLabelBehavior: FloatingLabelBehavior.never,
+                  hintText: "Company Name",
+                  border: InputBorder.none,
                 ),
               ),
+              Divider(),
               SizedBox(height: Responsive().smallH),
               SubCategoryTitle(FontAwesomeIcons.clock, "Date Of Application"),
               ListTile(
@@ -77,6 +79,7 @@ class NewJobSheet extends StatelessWidget {
               SizedBox(height: Responsive().smallH),
               SubCategoryTitle(
                   FontAwesomeIcons.graduationCap, "Job Description"),
+              SizedBox(height: Responsive().tinyH),
               Container(
                 height: Responsive().extraLargeH,
                 child: ListView.builder(
@@ -95,14 +98,16 @@ class NewJobSheet extends StatelessWidget {
                   },
                 ),
               ),
+              SizedBox(height: Responsive().tinyH),
               TextFormField(
                 decoration: inputDecoration(labelText: 'Position'),
               ),
-              SizedBox(height: Responsive().smallH),
+              SizedBox(height: Responsive().tinyH),
               TextFormField(
                 decoration: inputDecoration(labelText: 'Location Remote'),
               ),
               SizedBox(height: Responsive().smallH),
+              Divider(),
               SubCategoryTitle(FontAwesomeIcons.eye, "Status"),
               CheckboxListTile(
                 value: true,
@@ -113,6 +118,7 @@ class NewJobSheet extends StatelessWidget {
                 decoration: inputDecoration(labelText: 'Under Review'),
               ),
               SizedBox(height: Responsive().smallH),
+              Divider(),
               SubCategoryTitle(
                   FontAwesomeIcons.hourglassStart, "Hiring Stages"),
               TimelineTile(
