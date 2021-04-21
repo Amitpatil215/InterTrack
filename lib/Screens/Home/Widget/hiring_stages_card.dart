@@ -19,6 +19,7 @@ class HiringStagesCard extends StatelessWidget {
   _onSaved() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+
       _controller.editThisStagebyId.value?.isEmpty ?? false
           ? _controller.addNewStage(
               Stage(
@@ -33,10 +34,19 @@ class HiringStagesCard extends StatelessWidget {
                 scheduledOn: _controller.pickedStageDate.value,
               ),
             );
-      _controller.editThisStagebyId.value = '';
-      _controller.pickedStageDate.value = DateTime.now();
-      _controller.selectedStageTitle.value = '';
+      // all observable variables are reinitialized
+      _reinitizalizeStagevariables();
     }
+  }
+
+  _reinitizalizeStagevariables() {
+    _controller.editThisStagebyId.value = '';
+    _controller.pickedStageDate.value = DateTime.now();
+    _controller.selectedStageTitle.value = '';
+  }
+
+  _onCancelled() {
+    _reinitizalizeStagevariables();
   }
 
   @override
@@ -46,135 +56,147 @@ class HiringStagesCard extends StatelessWidget {
       child: Obx(() {
         return Form(
           key: _formKey,
-          child: ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: _controller.jobApplication.value?.stages.length,
-            itemBuilder: (context, index) {
-              var _sortedStagesbyDate =
-                  _controller.jobApplication.value?.stages;
-              _sortedStagesbyDate
-                  ?.sort((a, b) => a.scheduledOn!.compareTo(b.scheduledOn!));
-              return Column(
-                children: [
-                  TimelineTile(
-                    alignment: TimelineAlign.manual,
-                    lineXY: 0.25,
-                    beforeLineStyle: LineStyle(
-                      thickness: Responsive().width * 0.004,
-                      color: Colors.black,
-                    ),
-                    indicatorStyle: IndicatorStyle(
-                        drawGap: true,
-                        color: Colors.transparent,
-                        iconStyle: IconStyle(
-                          iconData: Icons.adjust,
-                          fontSize: Responsive().extraLargeW,
-                        )),
-                    isFirst: index == 0,
-                    startChild: SizedBox(
-                      height: Responsive().smallH,
-                      child: Text(
-                        formatDate(
-                          _controller.jobApplication.value?.stages[index]
-                                  .scheduledOn ??
-                              DateTime.now(),
+          child: Column(
+            children: [
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: _controller.jobApplication.value?.stages.length,
+                itemBuilder: (context, index) {
+                  var _sortedStagesbyDate =
+                      _controller.jobApplication.value?.stages;
+                  _sortedStagesbyDate?.sort(
+                      (a, b) => a.scheduledOn!.compareTo(b.scheduledOn!));
+                  return Column(
+                    children: [
+                      TimelineTile(
+                        alignment: TimelineAlign.manual,
+                        lineXY: 0.25,
+                        beforeLineStyle: LineStyle(
+                          thickness: Responsive().width * 0.004,
+                          color: Colors.black,
                         ),
-                        style: TextStyle(
-                          fontSize: Responsive().mediumW,
+                        indicatorStyle: IndicatorStyle(
+                            drawGap: true,
+                            color: Colors.transparent,
+                            iconStyle: IconStyle(
+                              iconData: Icons.adjust,
+                              fontSize: Responsive().extraLargeW,
+                            )),
+                        isFirst: index == 0,
+                        startChild: SizedBox(
+                          height: Responsive().smallH,
+                          child: Text(
+                            formatDate(
+                              _controller.jobApplication.value?.stages[index]
+                                      .scheduledOn ??
+                                  DateTime.now(),
+                            ),
+                            style: TextStyle(
+                              fontSize: Responsive().mediumW,
+                            ),
+                          ),
+                        ),
+                        endChild: SizedBox(
+                          height: Responsive().extraLargeH,
+                          child: Center(
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: Responsive().smallW,
+                                ),
+                                GestureDetector(
+                                  child: Obx(() {
+                                    return Text(_controller.jobApplication.value
+                                            ?.stages[index].title ??
+                                        '');
+                                  }),
+                                  onTap: () {
+                                    _controller.setEditThiStageById(_controller
+                                            .jobApplication
+                                            .value
+                                            ?.stages[index]
+                                            .id ??
+                                        '');
+                                    _controller.setSelectedStageInfo(_controller
+                                            .jobApplication
+                                            .value
+                                            ?.stages[index]
+                                            .id ??
+                                        '');
+                                  },
+                                ),
+                                Spacer(),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    endChild: SizedBox(
-                      height: Responsive().extraLargeH,
-                      child: Center(
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: Responsive().smallW,
-                            ),
-                            GestureDetector(
-                              child: Obx(() {
-                                return Text(_controller.jobApplication.value
-                                        ?.stages[index].title ??
-                                    '');
-                              }),
-                              onTap: () {
-                                _controller.setEditThiStageById(_controller
-                                        .jobApplication
-                                        .value
-                                        ?.stages[index]
-                                        .id ??
-                                    '');
-                                _controller.setSelectedStageInfo(_controller
-                                        .jobApplication
-                                        .value
-                                        ?.stages[index]
-                                        .id ??
-                                    '');
-                              },
-                            ),
-                            Spacer(),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Obx(() {
-                    if ((_controller.jobApplication.value?.stages.length ==
-                                index + 1 &&
-                            _controller.editThisStagebyId.isEmpty) ||
-                        _controller.jobApplication.value?.stages[index].id ==
+                      Obx(() {
+                        if (_controller
+                                .jobApplication.value?.stages[index].id ==
                             _controller.editThisStagebyId.value) {
-                      return Column(
-                        children: [
-                          ListTile(
-                            contentPadding: EdgeInsets.all(0),
-                            title: TextFormField(
-                              initialValue:
-                                  _controller.selectedStageTitle.value ?? '',
-                              onSaved: (val) {
-                                _controller.selectedStageTitle.value = val;
-                              },
-                              decoration:
-                                  inputDecoration(labelText: 'Phone Screening'),
-                            ),
-                            trailing: GestureDetector(
-                              onTap: () async {
-                                _controller.pickedStageDate.value =
-                                    await _pickDate(context);
-                              },
-                              child: Obx(() {
-                                return Text(
-                                  formatDate(
-                                    _controller.pickedStageDate.value ??
-                                        DateTime.now(),
-                                  ),
-                                );
-                              }),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Spacer(),
-                              OutlinedButton(
-                                onPressed: _onSaved,
-                                child: Text('Add'),
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
-                    } else {
-                      return Container();
-                    }
-                  }),
-                ],
-              );
-            },
+                          return _addEditStageField(context, true);
+                        } else {
+                          return Container();
+                        }
+                      }),
+                    ],
+                  );
+                },
+              ),
+              Obx(() {
+                if (_controller.editThisStagebyId.value?.isEmpty ?? false)
+                  return _addEditStageField(context, false);
+                else
+                  return Container();
+              })
+            ],
           ),
         );
       }),
+    );
+  }
+
+  Column _addEditStageField(BuildContext context, bool isEdit) {
+    return Column(
+      children: [
+        ListTile(
+          contentPadding: EdgeInsets.all(0),
+          title: TextFormField(
+            initialValue: _controller.selectedStageTitle.value ?? '',
+            onSaved: (val) {
+              _controller.selectedStageTitle.value = val;
+            },
+            decoration: inputDecoration(labelText: 'Phone Screening'),
+          ),
+          trailing: GestureDetector(
+            onTap: () async {
+              _controller.pickedStageDate.value = await _pickDate(context);
+            },
+            child: Obx(() {
+              return Text(
+                formatDate(
+                  _controller.pickedStageDate.value ?? DateTime.now(),
+                ),
+              );
+            }),
+          ),
+        ),
+        Row(
+          children: [
+            Spacer(),
+            TextButton(
+              onPressed: _onCancelled,
+              child: Text('Cancel'),
+            ),
+            OutlinedButton(
+              onPressed: _onSaved,
+              child: Text(isEdit ? 'Save' : 'Add'),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
