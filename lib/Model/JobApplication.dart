@@ -11,7 +11,7 @@ class JobApplication {
 
   /// e.g. under review
   final String statusLabel;
-  final bool isApplied;
+  bool isApplied;
 
   /// e.g. phone screening
   final List<Stage> stages;

@@ -16,10 +16,10 @@ class ApplicationStatusCard extends StatelessWidget {
       return Column(
         children: [
           CheckboxListTile(
-            value: _controller.isApplicationSubmitted.value,
+            value: _controller.jobApplication.value?.isApplied,
             title: Text('Application Submitted'),
             onChanged: (val) {
-              _controller.isApplicationSubmitted.value = val;
+              _controller.setApplicationStatus(val ?? false);
             },
           ),
           TextFormField(

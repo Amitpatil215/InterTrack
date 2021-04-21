@@ -21,8 +21,11 @@ class NewJobApplicationController extends GetxController {
     )
   ]).obs;
 
-  //* Hiring Stages
-  RxBool isApplicationSubmitted = false.obs;
+  //* Job application status
+  setApplicationStatus(bool isSubmitted) {
+    jobApplication.value?.isApplied = isSubmitted;
+    jobApplication.refresh();
+  }
 
   //* Hiring Stages
   Rx<DateTime> pickedStageDate = DateTime.now().obs;
