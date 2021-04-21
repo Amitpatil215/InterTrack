@@ -79,12 +79,13 @@ class CompanyDateDetailsCard extends StatelessWidget {
 }
 
 Future<DateTime?> _pickDate(BuildContext context) async {
+  final _now = DateTime.now();
   return await showDatePicker(
     context: context,
-    initialDate: DateTime.now(),
-    firstDate: DateTime.now(),
-    lastDate: DateTime.now().add(
-      Duration(days: 100),
+    initialDate: _now,
+    firstDate: _now.subtract(Duration(days: 3000)),
+    lastDate: _now.add(
+      Duration(days: 3000),
     ),
   );
 }
