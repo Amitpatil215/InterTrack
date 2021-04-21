@@ -39,44 +39,7 @@ class NewJobSheet extends StatelessWidget {
                   )
                 ],
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintStyle: TextStyle(
-                    fontSize: Responsive().extraLargeW,
-                  ),
-                  floatingLabelBehavior: FloatingLabelBehavior.never,
-                  hintText: "Company Name",
-                  border: InputBorder.none,
-                ),
-              ),
-              Divider(),
-              SizedBox(height: Responsive().smallH),
-              SubCategoryTitle(FontAwesomeIcons.clock, "Date Of Application"),
-              ListTile(
-                title: GestureDetector(
-                  onTap: () async {
-                    await pickDate(context);
-                  },
-                  child: Obx(() {
-                    return Text(
-                      formatDate(
-                        _controller?.startDateTime.value ?? DateTime.now(),
-                      ),
-                    );
-                  }),
-                ),
-                trailing: GestureDetector(
-                  onTap: () async {
-                    await pickTime(context);
-                  },
-                  child: Obx(() {
-                    return Text(
-                      formatTime(
-                          _controller?.startDateTime.value ?? DateTime.now()),
-                    );
-                  }),
-                ),
-              ),
+              CompanyDateDetailsCard(controller: _controller),
               Divider(),
               SizedBox(height: Responsive().smallH),
               SubCategoryTitle(
@@ -101,35 +64,8 @@ class NewJobSheet extends StatelessWidget {
   }
 }
 
-class SubCategoryTitle extends StatelessWidget {
-  const SubCategoryTitle(
-    this.icondata,
-    this.title,
-  );
 
-  final IconData icondata;
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        FaIcon(
-          icondata,
-          size: Responsive().largeW,
-        ),
-        SizedBox(
-          width: Responsive().smallW,
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
-    );
-  }
-}
+
 
 Future<DateTime?> pickDate(BuildContext context) async {
   return await showDatePicker(
