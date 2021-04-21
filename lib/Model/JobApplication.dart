@@ -10,7 +10,7 @@ class JobApplication {
   final String position;
   JobType jobType;
   final DateTime? expectedDate;
-  final DateTime? dateOfApplication;
+  DateTime? dateOfApplication;
 
   /// e.g. under review
   final String statusLabel;

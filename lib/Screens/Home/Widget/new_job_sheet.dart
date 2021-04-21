@@ -5,11 +5,9 @@ import 'package:get/get.dart';
 import 'package:intertrack/Controller/new_job_application_controller.dart';
 import 'package:intertrack/Screens/Home/Widget/application_status_card.dart';
 import 'package:intertrack/Screens/Home/Widget/home_screen_widgets.dart';
-import 'package:intertrack/Controller/JobApplication.dart';
 import 'package:intertrack/Utils/utils.dart';
 
 class NewJobSheet extends StatelessWidget {
-  final _controller = Get.put(JobApplicationController());
   final _newJobApplicationController = Get.put(NewJobApplicationController());
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,7 @@ class NewJobSheet extends StatelessWidget {
                   )
                 ],
               ),
-              CompanyDateDetailsCard(controller: _controller),
+              CompanyDateDetailsCard(controller: _newJobApplicationController!),
               Divider(),
               SizedBox(height: Responsive().smallH),
               SubCategoryTitle(
@@ -63,9 +61,6 @@ class NewJobSheet extends StatelessWidget {
     );
   }
 }
-
-
-
 
 Future<DateTime?> pickDate(BuildContext context) async {
   return await showDatePicker(

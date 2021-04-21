@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Utils/constant.dart';
 import 'package:uuid/uuid.dart';
@@ -6,9 +7,6 @@ import 'package:intertrack/Model/JobApplication.dart';
 enum eventFrequency { noRepeat, everyWeek }
 
 class NewJobApplicationController extends GetxController {
-  final startDateTime = DateTime.now().obs;
-  final frequency = eventFrequency.noRepeat.obs;
-
   Rx<JobApplication> jobApplication = JobApplication(stages: [
     Stage(
       id: '1',
@@ -21,6 +19,10 @@ class NewJobApplicationController extends GetxController {
       scheduledOn: DateTime.now(),
     )
   ]).obs;
+
+  //* Company name and date of application
+  Rx<TimeOfDay> pickedApplicationTime = TimeOfDay.now().obs;
+  Rx<DateTime> pickedApplicationDate = DateTime.now().obs;
 
   //* Job description
   setJobType(JobType jobType) {

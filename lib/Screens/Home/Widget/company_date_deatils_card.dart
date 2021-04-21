@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:intertrack/Controller/JobApplication.dart';
+import 'package:intertrack/Controller/new_job_application_controller.dart';
 import 'package:intertrack/Utils/utils.dart';
 import 'package:intertrack/Screens/Home/Widget/home_screen_widgets.dart';
 
 class CompanyDateDetailsCard extends StatelessWidget {
   const CompanyDateDetailsCard({
     Key? key,
-    required JobApplicationController? controller,
+    required NewJobApplicationController controller,
   })   : _controller = controller,
         super(key: key);
 
-  final JobApplicationController? _controller;
+  final NewJobApplicationController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -34,23 +34,27 @@ class CompanyDateDetailsCard extends StatelessWidget {
         ListTile(
           title: GestureDetector(
             onTap: () async {
-              await _pickDate(context);
+              _controller.pickedApplicationDate.value =
+                  await _pickDate(context);
             },
             child: Obx(() {
               return Text(
                 formatDate(
-                  _controller?.startDateTime.value ?? DateTime.now(),
+                  _controller.pickedApplicationDate.value ?? DateTime.now(),
                 ),
               );
             }),
           ),
           trailing: GestureDetector(
             onTap: () async {
-              await _pickTime(context);
+              _controller.pickedApplicationTime.value =
+                  await _pickTime(context);
             },
             child: Obx(() {
               return Text(
-                formatTime(_controller?.startDateTime.value ?? DateTime.now()),
+                formatTime(timeOfDayToDateTime(
+                    _controller.pickedApplicationTime.value ??
+                        TimeOfDay.now())),
               );
             }),
           ),
