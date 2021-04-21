@@ -17,32 +17,33 @@ class JobDescriptionCard extends StatelessWidget {
       children: [
         Container(
           height: Responsive().extraLargeH,
-          child: Obx(() {
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: JobType.values.length,
-              itemBuilder: (context, index) {
-                bool _isSelected = _controller.jobApplication.value?.jobType ==
-                    JobType.values[index];
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Responsive().tinyW),
-                  child: GestureDetector(
-                    child: Chip(
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: JobType.values.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: Responsive().tinyW),
+                child: GestureDetector(
+                  child: Obx(() {
+                    bool _isSelected =
+                        _controller.jobApplication.value?.jobType ==
+                            JobType.values[index];
+                    return Chip(
                       label: Text(
                         describeEnum(JobType.values[index]),
                         style:
                             TextStyle(color: _isSelected ? Colors.white : null),
                       ),
                       backgroundColor: _isSelected ? Colors.purpleAccent : null,
-                    ),
-                    onTap: () {
-                      _controller.setJobType(JobType.values[index]);
-                    },
-                  ),
-                );
-              },
-            );
-          }),
+                    );
+                  }),
+                  onTap: () {
+                    _controller.setJobType(JobType.values[index]);
+                  },
+                ),
+              );
+            },
+          ),
         ),
         SizedBox(height: Responsive().tinyH),
         TextFormField(
