@@ -22,8 +22,9 @@ class NewJobApplicationController extends GetxController {
   ]).obs;
 
   Rx<DateTime> pickedStageDate = DateTime.now().obs;
-
+  RxString selectedStageTitle = ''.obs;
   RxString editThisStagebyId = ''.obs;
+  RxString selectedStageId = ''.obs;
 
   setEditThiStageById(String id) {
     if (editThisStagebyId.value == id) {
@@ -40,5 +41,37 @@ class NewJobApplicationController extends GetxController {
       title: stage.title,
     ));
     jobApplication.refresh();
+  }
+
+  editStage(Stage stage) {
+    jobApplication.value?.stages.forEach((element) {
+      if (element.id == stage.id) {
+        removeStageById(stage.id);
+        addNewStage(stage);
+
+        return;
+      }
+    });
+
+    jobApplication.value?.stages.forEach((element) {
+      if (element.id == stage.id) {
+        print(element.title);
+      }
+    });
+    jobApplication.refresh();
+  }
+
+  removeStageById(String id) {
+    jobApplication.value?.stages.removeWhere((element) => element.id == id);
+  }
+
+  setSelectedStageInfo(String id) {
+    jobApplication.value?.stages.forEach((element) {
+      if (element.id == id) {
+        selectedStageId.value = element.id;
+        selectedStageTitle.value = element.title;
+        pickedStageDate.value = element.scheduledOn;
+      }
+    });
   }
 }
