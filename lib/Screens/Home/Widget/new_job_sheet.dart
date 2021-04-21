@@ -112,7 +112,7 @@ class NewJobSheet extends StatelessWidget {
               SizedBox(height: Responsive().smallH),
               Divider(),
               SubCategoryTitle(FontAwesomeIcons.eye, "Status"),
-              ApplicationStatusCard(),
+              ApplicationStatusCard(controller: _newJobApplicationController!),
               SizedBox(height: Responsive().smallH),
               Divider(),
               SubCategoryTitle(
