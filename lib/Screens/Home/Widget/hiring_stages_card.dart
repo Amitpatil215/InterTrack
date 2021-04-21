@@ -186,10 +186,11 @@ class HiringStagesCard extends StatelessWidget {
         Row(
           children: [
             Spacer(),
-            TextButton(
-              onPressed: _onCancelled,
-              child: Text('Cancel'),
-            ),
+            if (isEdit)
+              TextButton(
+                onPressed: _onCancelled,
+                child: Text('Cancel'),
+              ),
             OutlinedButton(
               onPressed: _onSaved,
               child: Text(isEdit ? 'Save' : 'Add'),
