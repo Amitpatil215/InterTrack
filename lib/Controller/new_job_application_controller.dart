@@ -23,6 +23,7 @@ class NewJobApplicationController extends GetxController {
   //* Company name and date of application
   Rx<TimeOfDay> pickedApplicationTime = TimeOfDay.now().obs;
   Rx<DateTime> pickedApplicationDate = DateTime.now().obs;
+  RxString selectedCompanyName = ''.obs;
 
   //* Job description
   setJobType(JobType jobType) {

@@ -6,26 +6,40 @@ import 'package:intertrack/Utils/utils.dart';
 import 'package:intertrack/Screens/Home/Widget/home_screen_widgets.dart';
 
 class CompanyDateDetailsCard extends StatelessWidget {
-  const CompanyDateDetailsCard({
+  CompanyDateDetailsCard({
     Key? key,
     required NewJobApplicationController controller,
   })   : _controller = controller,
         super(key: key);
 
   final NewJobApplicationController _controller;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextFormField(
-          decoration: InputDecoration(
-            hintStyle: TextStyle(
-              fontSize: Responsive().extraLargeW,
+        Form(
+          key: _formKey,
+          child: TextFormField(
+            onFieldSubmitted: (val) {
+              _controller.selectedCompanyName.value = val;
+            },
+            onChanged: (val) {
+              _controller.selectedCompanyName.value = val;
+            },
+            onSaved: (val) {
+              _controller.selectedCompanyName.value = val;
+            },
+            initialValue: _controller.selectedCompanyName.value,
+            decoration: InputDecoration(
+              hintStyle: TextStyle(
+                fontSize: Responsive().extraLargeW,
+              ),
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              hintText: "Company Name",
+              border: InputBorder.none,
             ),
-            floatingLabelBehavior: FloatingLabelBehavior.never,
-            hintText: "Company Name",
-            border: InputBorder.none,
           ),
         ),
         Divider(),
