@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:intertrack/Utils/constant.dart';
 import 'package:uuid/uuid.dart';
 import 'package:intertrack/Model/JobApplication.dart';
 
@@ -20,6 +21,12 @@ class NewJobApplicationController extends GetxController {
       scheduledOn: DateTime.now(),
     )
   ]).obs;
+
+  //* Job description
+  setJobType(JobType jobType) {
+    jobApplication.value?.jobType = jobType;
+    jobApplication.refresh();
+  }
 
   //* Job application status
   setApplicationStatus(bool isSubmitted) {

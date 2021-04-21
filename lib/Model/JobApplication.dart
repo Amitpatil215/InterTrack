@@ -1,3 +1,5 @@
+import 'package:intertrack/Utils/constant.dart';
+
 class JobApplication {
   final String id;
   final String companyName;
@@ -6,6 +8,7 @@ class JobApplication {
 
   /// e.g. SDE1
   final String position;
+  JobType jobType;
   final DateTime? expectedDate;
   final DateTime? dateOfApplication;
 
@@ -21,6 +24,7 @@ class JobApplication {
     this.companyName = '',
     this.referenceUrl = '',
     this.position = '',
+    this.jobType = JobType.FullTime,
     this.imageUrl = '',
     this.expectedDate,
     this.dateOfApplication,

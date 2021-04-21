@@ -83,32 +83,7 @@ class NewJobSheet extends StatelessWidget {
               SubCategoryTitle(
                   FontAwesomeIcons.graduationCap, "Job Description"),
               SizedBox(height: Responsive().tinyH),
-              Container(
-                height: Responsive().extraLargeH,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: JobType.values.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: Responsive().tinyW),
-                      child: Chip(
-                        label: Text(
-                          describeEnum(JobType.values[index]),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              SizedBox(height: Responsive().tinyH),
-              TextFormField(
-                decoration: inputDecoration(labelText: 'Position'),
-              ),
-              SizedBox(height: Responsive().tinyH),
-              TextFormField(
-                decoration: inputDecoration(labelText: 'Location Remote'),
-              ),
+              JobDescriptionCard(),
               SizedBox(height: Responsive().smallH),
               Divider(),
               SubCategoryTitle(FontAwesomeIcons.eye, "Status"),
