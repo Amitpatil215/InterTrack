@@ -49,6 +49,11 @@ class HiringStagesCard extends StatelessWidget {
     _reinitizalizeStagevariables();
   }
 
+  _onDelete() {
+    _controller.removeStageById(_controller.selectedStageId.value ?? '', true);
+    _reinitizalizeStagevariables();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -185,6 +190,11 @@ class HiringStagesCard extends StatelessWidget {
         ),
         Row(
           children: [
+            if (isEdit)
+              TextButton(
+                onPressed: _onDelete,
+                child: Text('Delete'),
+              ),
             Spacer(),
             if (isEdit)
               TextButton(

@@ -46,23 +46,18 @@ class NewJobApplicationController extends GetxController {
   editStage(Stage stage) {
     jobApplication.value?.stages.forEach((element) {
       if (element.id == stage.id) {
-        removeStageById(stage.id);
+        removeStageById(stage.id, false);
         addNewStage(stage);
-
         return;
       }
     });
 
-    jobApplication.value?.stages.forEach((element) {
-      if (element.id == stage.id) {
-        print(element.title);
-      }
-    });
     jobApplication.refresh();
   }
 
-  removeStageById(String id) {
+  removeStageById(String id, bool refreshObservable) {
     jobApplication.value?.stages.removeWhere((element) => element.id == id);
+    if (refreshObservable) jobApplication.refresh();
   }
 
   setSelectedStageInfo(String id) {
