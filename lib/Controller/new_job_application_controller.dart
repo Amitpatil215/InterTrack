@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Utils/constant.dart';
+import 'package:intertrack/Utils/date_formats.dart';
 import 'package:uuid/uuid.dart';
 import 'package:intertrack/Model/JobApplication.dart';
 
@@ -45,8 +48,12 @@ class NewJobApplicationController extends GetxController {
   bool onSaved() {
     if (formKey.value?.currentState?.validate() ?? false) {
       formKey.value?.currentState?.save();
-      print(jobApplication.value?.companyName);
-      print(jobApplication.value?.position);
+
+      jobApplication.value?.dateOfApplication = timeOfDayToDateTime(
+        pickedApplicationTime.value!,
+        dateTime: pickedApplicationDate.value,
+      );
+      inspect(jobApplication.value);
       return true;
     }
     return false;

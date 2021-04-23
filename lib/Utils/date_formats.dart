@@ -14,8 +14,14 @@ String formatTime(DateTime date) {
 }
 
 /// Convert Time of Day to DateTime
-DateTime timeOfDayToDateTime(TimeOfDay timeOfDay) {
-  final now = new DateTime.now();
-  return DateTime(
-      now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
+/// if dateTime is not provider then time of day merged with current date time
+DateTime timeOfDayToDateTime(TimeOfDay timeOfDay, {DateTime? dateTime}) {
+  if (dateTime != null) {
+    return DateTime(dateTime.year, dateTime.month, dateTime.day, timeOfDay.hour,
+        timeOfDay.minute);
+  } else {
+    final now = new DateTime.now();
+    return DateTime(
+        now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
+  }
 }
