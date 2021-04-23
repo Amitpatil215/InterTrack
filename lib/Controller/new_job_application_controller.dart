@@ -32,8 +32,13 @@ class NewJobApplicationController extends GetxController {
   }
 
   //* Job application status
-  setApplicationStatus(bool isSubmitted) {
+  setJobApplicationStatus(bool isSubmitted) {
     jobApplication.value?.isApplied = isSubmitted;
+    jobApplication.refresh();
+  }
+
+  setApplicationStatusLabel(ApplicationStatus status) {
+    jobApplication.value?.statusLabel = status;
     jobApplication.refresh();
   }
 

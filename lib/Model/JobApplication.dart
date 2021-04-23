@@ -13,7 +13,7 @@ class JobApplication {
   DateTime? dateOfApplication;
 
   /// e.g. under review
-  final String statusLabel;
+  ApplicationStatus statusLabel;
   bool isApplied;
 
   /// e.g. phone screening
@@ -28,7 +28,7 @@ class JobApplication {
     this.imageUrl = '',
     this.expectedDate,
     this.dateOfApplication,
-    this.statusLabel = '',
+    this.statusLabel = ApplicationStatus.Researching,
     this.isApplied = false,
     this.stages = const [],
   });
