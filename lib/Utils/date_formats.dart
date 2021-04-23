@@ -5,6 +5,10 @@ String formatDate(DateTime date) {
   return DateFormat('EE, dd MMM, yyyy').format(date);
 }
 
+String formatDateEEDDMMM(DateTime date) {
+  return DateFormat('EE, dd MMM').format(date);
+}
+
 String formatTime(DateTime date) {
   return DateFormat('hh:MM aa').format(date).toLowerCase();
 }

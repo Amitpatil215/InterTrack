@@ -93,7 +93,7 @@ class HiringStagesCard extends StatelessWidget {
                         startChild: SizedBox(
                           height: Responsive().smallH,
                           child: Text(
-                            formatDate(
+                            formatDateEEDDMMM(
                               _controller.jobApplication.value?.stages[index]
                                       .scheduledOn ??
                                   DateTime.now(),
