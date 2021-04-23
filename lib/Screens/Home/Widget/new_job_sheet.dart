@@ -30,7 +30,10 @@ class NewJobSheet extends StatelessWidget {
                   ),
                   Spacer(),
                   ElevatedButton(
-                    onPressed: _newJobApplicationController?.onSaved,
+                    onPressed: () {
+                      bool _isSaved = _newJobApplicationController!.onSaved();
+                      if (_isSaved) Navigator.of(context).pop();
+                    },
                     child: Text(
                       'Save',
                     ),

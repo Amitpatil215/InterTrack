@@ -38,11 +38,14 @@ class NewJobApplicationController extends GetxController {
 
   final Rx<GlobalKey<FormState>> formKey = GlobalKey<FormState>().obs;
 
-  void onSaved() {
+  bool onSaved() {
     if (formKey.value?.currentState?.validate() ?? false) {
       formKey.value?.currentState?.save();
+      print(selectedCompanyName.value);
       print(jobApplication.value?.position);
+      return true;
     }
+    return false;
   }
 
   //* Job application status
