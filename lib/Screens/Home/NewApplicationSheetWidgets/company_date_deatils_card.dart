@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Controller/new_job_application_controller.dart';
+import 'package:intertrack/Screens/Home/NewApplicationSheetWidgets/new_job_application_widget.dart';
 import 'package:intertrack/Utils/utils.dart';
-import 'package:intertrack/Screens/Home/Widget/home_screen_widgets.dart';
 
 class CompanyDateDetailsCard extends StatelessWidget {
   CompanyDateDetailsCard({
