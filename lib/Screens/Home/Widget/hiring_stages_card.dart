@@ -174,6 +174,7 @@ class HiringStagesCard extends StatelessWidget {
             onSaved: (val) {
               _controller.selectedStageTitle.value = val;
             },
+            validator: (val) => FormValidator().isNullOrEmpty(val),
             decoration: inputDecoration(labelText: 'Phone Screening'),
           ),
           trailing: GestureDetector(
