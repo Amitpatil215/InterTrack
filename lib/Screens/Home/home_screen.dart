@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intertrack/Screens/Home/JobApplicationWidgets/JobApplicationWidgets.dart';
 import 'package:intertrack/Screens/Home/NewApplicationSheetWidgets/new_job_application_widget.dart';
 import 'package:intertrack/Shared/Shared.dart';
-import 'package:intertrack/Utils/responsive.dart';
 import 'package:intertrack/Utils/utils.dart';
 
 class HomeScreen extends StatelessWidget {
