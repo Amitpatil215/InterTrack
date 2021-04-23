@@ -47,11 +47,12 @@ class JobDescriptionCard extends StatelessWidget {
         ),
         SizedBox(height: Responsive().tinyH),
         TextFormField(
+          validator: FormValidator().isNullOrEmpty,
+          onSaved: (val) {
+            _controller.setJobPosition(val ?? '');
+          },
+          initialValue: _controller.jobApplication.value?.position,
           decoration: inputDecoration(labelText: 'Position'),
-        ),
-        SizedBox(height: Responsive().tinyH),
-        TextFormField(
-          decoration: inputDecoration(labelText: 'Location Remote'),
         ),
       ],
     );

@@ -7,7 +7,7 @@ class JobApplication {
   final String imageUrl;
 
   /// e.g. SDE1
-  final String position;
+  String position;
   JobType jobType;
   final DateTime? expectedDate;
   DateTime? dateOfApplication;

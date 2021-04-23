@@ -4,3 +4,4 @@ export 'input_decoration.dart';
 export 'pallets.dart';
 export 'responsive.dart';
 export 'utils.dart';
+export 'form_validator.dart';

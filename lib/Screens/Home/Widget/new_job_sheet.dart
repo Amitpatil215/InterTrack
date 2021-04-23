@@ -30,20 +30,29 @@ class NewJobSheet extends StatelessWidget {
                   ),
                   Spacer(),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: _newJobApplicationController?.onSaved,
                     child: Text(
                       'Save',
                     ),
                   )
                 ],
               ),
-              CompanyDateDetailsCard(controller: _newJobApplicationController!),
-              Divider(),
-              SizedBox(height: Responsive().smallH),
-              SubCategoryTitle(
-                  FontAwesomeIcons.graduationCap, "Job Description"),
-              SizedBox(height: Responsive().tinyH),
-              JobDescriptionCard(controller: _newJobApplicationController!),
+              Form(
+                key: _newJobApplicationController!.formKey.value,
+                child: Column(
+                  children: [
+                    CompanyDateDetailsCard(
+                        controller: _newJobApplicationController!),
+                    Divider(),
+                    SizedBox(height: Responsive().smallH),
+                    SubCategoryTitle(
+                        FontAwesomeIcons.graduationCap, "Job Description"),
+                    SizedBox(height: Responsive().tinyH),
+                    JobDescriptionCard(
+                        controller: _newJobApplicationController!),
+                  ],
+                ),
+              ),
               SizedBox(height: Responsive().smallH),
               Divider(),
               SubCategoryTitle(FontAwesomeIcons.eye, "Status"),

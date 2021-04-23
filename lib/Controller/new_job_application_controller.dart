@@ -31,6 +31,20 @@ class NewJobApplicationController extends GetxController {
     jobApplication.refresh();
   }
 
+  setJobPosition(String position) {
+    jobApplication.value?.position = position;
+    jobApplication.refresh();
+  }
+
+  final Rx<GlobalKey<FormState>> formKey = GlobalKey<FormState>().obs;
+
+  void onSaved() {
+    if (formKey.value?.currentState?.validate() ?? false) {
+      formKey.value?.currentState?.save();
+      print(jobApplication.value?.position);
+    }
+  }
+
   //* Job application status
   setJobApplicationStatus(bool isSubmitted) {
     jobApplication.value?.isApplied = isSubmitted;

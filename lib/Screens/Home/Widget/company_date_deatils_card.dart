@@ -13,33 +13,30 @@ class CompanyDateDetailsCard extends StatelessWidget {
         super(key: key);
 
   final NewJobApplicationController _controller;
-  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Form(
-          key: _formKey,
-          child: TextFormField(
-            onFieldSubmitted: (val) {
-              _controller.selectedCompanyName.value = val;
-            },
-            onChanged: (val) {
-              _controller.selectedCompanyName.value = val;
-            },
-            onSaved: (val) {
-              _controller.selectedCompanyName.value = val;
-            },
-            initialValue: _controller.selectedCompanyName.value,
-            decoration: InputDecoration(
-              hintStyle: TextStyle(
-                fontSize: Responsive().extraLargeW,
-              ),
-              floatingLabelBehavior: FloatingLabelBehavior.never,
-              hintText: "Company Name",
-              border: InputBorder.none,
+        TextFormField(
+          onFieldSubmitted: (val) {
+            _controller.selectedCompanyName.value = val;
+          },
+          onChanged: (val) {
+            _controller.selectedCompanyName.value = val;
+          },
+          onSaved: (val) {
+            _controller.selectedCompanyName.value = val;
+          },
+          initialValue: _controller.selectedCompanyName.value,
+          validator: (val) => FormValidator().isNullOrEmpty(val),
+          decoration: InputDecoration(
+            hintStyle: TextStyle(
+              fontSize: Responsive().extraLargeW,
             ),
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            hintText: "Company Name",
+            border: InputBorder.none,
           ),
         ),
         Divider(),
