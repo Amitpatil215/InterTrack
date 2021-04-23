@@ -103,8 +103,10 @@ class HiringStagesCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        endChild: SizedBox(
-                          height: Responsive().extraLargeH,
+                        endChild: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minHeight: Responsive().extraLargeH,
+                          ),
                           child: Center(
                             child: Row(
                               children: [
@@ -113,9 +115,11 @@ class HiringStagesCard extends StatelessWidget {
                                 ),
                                 GestureDetector(
                                   child: Obx(() {
-                                    return Text(_controller.jobApplication.value
-                                            ?.stages[index].title ??
-                                        '');
+                                    return Container(
+                                      width: Responsive().width * 0.5,
+                                      child: Text(
+                                          "${_controller.jobApplication.value?.stages[index].title ?? ''}"),
+                                    );
                                   }),
                                   onTap: () {
                                     _controller.setEditThiStageById(_controller
