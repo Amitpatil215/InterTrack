@@ -43,6 +43,7 @@ class HiringStagesCard extends StatelessWidget {
     _controller.editThisStagebyId.value = '';
     _controller.pickedStageDate.value = DateTime.now();
     _controller.selectedStageTitle.value = '';
+    _formKey.currentState?.reset();
   }
 
   _onCancelled() {
