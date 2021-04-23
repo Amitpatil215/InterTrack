@@ -20,15 +20,15 @@ class CompanyDateDetailsCard extends StatelessWidget {
       children: [
         TextFormField(
           onFieldSubmitted: (val) {
-            _controller.selectedCompanyName.value = val;
+            _controller.jobApplication.value?.companyName = val;
           },
           onChanged: (val) {
-            _controller.selectedCompanyName.value = val;
+            _controller.jobApplication.value?.companyName = val;
           },
           onSaved: (val) {
-            _controller.selectedCompanyName.value = val;
+            _controller.setCompanyName(val ?? '');
           },
-          initialValue: _controller.selectedCompanyName.value,
+          initialValue: _controller.jobApplication.value?.companyName,
           validator: (val) => FormValidator().isNullOrEmpty(val),
           decoration: InputDecoration(
             hintStyle: TextStyle(

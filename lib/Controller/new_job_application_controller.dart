@@ -23,7 +23,11 @@ class NewJobApplicationController extends GetxController {
   //* Company name and date of application
   Rx<TimeOfDay> pickedApplicationTime = TimeOfDay.now().obs;
   Rx<DateTime> pickedApplicationDate = DateTime.now().obs;
-  RxString selectedCompanyName = ''.obs;
+
+  setCompanyName(String name) {
+    jobApplication.value?.companyName = name;
+    jobApplication.refresh();
+  }
 
   //* Job description
   setJobType(JobType jobType) {
@@ -41,7 +45,7 @@ class NewJobApplicationController extends GetxController {
   bool onSaved() {
     if (formKey.value?.currentState?.validate() ?? false) {
       formKey.value?.currentState?.save();
-      print(selectedCompanyName.value);
+      print(jobApplication.value?.companyName);
       print(jobApplication.value?.position);
       return true;
     }

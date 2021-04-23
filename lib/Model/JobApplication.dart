@@ -2,7 +2,7 @@ import 'package:intertrack/Utils/constant.dart';
 
 class JobApplication {
   final String id;
-  final String companyName;
+  String companyName;
   final String referenceUrl;
   final String imageUrl;
 
