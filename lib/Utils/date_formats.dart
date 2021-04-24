@@ -14,6 +14,16 @@ String formatDateDDthMMM(DateTime date) {
   return DateFormat('dd').format(date) + 'th ' + DateFormat('MMM').format(date);
 }
 
+/// e.g 12
+String formatDateDD(DateTime date) {
+  return DateFormat('dd').format(date);
+}
+
+/// e.g Apr
+String formatDateMMM(DateTime date) {
+  return DateFormat('MMM').format(date);
+}
+
 String formatTime(DateTime date) {
   return DateFormat('hh:MM aa').format(date).toLowerCase();
 }

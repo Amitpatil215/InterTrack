@@ -21,6 +21,8 @@ class JobApplicationsList extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
+              _jobApplicationController.selectedJobApplicationId.value =
+                  _jobApplicationController.jobApplications[index].id;
               Navigator.of(context)
                   .pushNamed(Constant.routeJobApplicationDetails);
             },

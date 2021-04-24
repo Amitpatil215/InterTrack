@@ -5,10 +5,13 @@ import 'package:intertrack/Utils/constant.dart';
 enum eventFrequency { noRepeat, everyWeek }
 
 class JobApplicationsController extends GetxController {
+  /// typically used to get more details on tapping one of job using its id
+  RxString selectedJobApplicationId = ''.obs;
+
   List<JobApplication> jobApplications = [
     for (int i = 0; i < 7; i++)
       JobApplication(
-        id: '1',
+        id: '$i',
         companyName: "Amazon Pvt Ltd",
         dateOfApplication: DateTime.now().subtract(Duration(days: 4)),
         isApplied: false,
