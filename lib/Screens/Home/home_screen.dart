@@ -8,18 +8,20 @@ import 'package:intertrack/Utils/utils.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: scaffoldBGColor,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Responsive().smallW),
-        child: JobApplicationsList(),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          showCustomBottomModelSheet(context, NewJobSheet());
-        },
-        label: Text('New'),
-        icon: Icon(Icons.add),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: scaffoldBGColor,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: Responsive().smallW),
+          child: JobApplicationsList(),
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            showCustomBottomModelSheet(context, NewJobSheet());
+          },
+          label: Text('New'),
+          icon: Icon(Icons.add),
+        ),
       ),
     );
   }
