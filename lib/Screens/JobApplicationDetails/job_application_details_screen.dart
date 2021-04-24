@@ -18,7 +18,19 @@ class JobApplicationDetailsScreen extends StatelessWidget {
                 size: Responsive().extraLargeW,
               ),
               onPressed: () {},
-            )
+            ),
+            PopupMenuButton(
+              iconSize: Responsive().extraLargeW,
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 0,
+                  child: Text('Delete'),
+                ),
+              ],
+              onSelected: (index) {
+                print(index);
+              },
+            ),
           ],
           iconTheme: IconThemeData(
             color: Colors.black,
