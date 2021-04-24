@@ -9,6 +9,11 @@ String formatDateEEDDMMM(DateTime date) {
   return DateFormat('EE, dd MMM').format(date);
 }
 
+///e.g. 14th Apr
+String formatDateDDthMMM(DateTime date) {
+  return DateFormat('dd').format(date) + 'th ' + DateFormat('MMM').format(date);
+}
+
 String formatTime(DateTime date) {
   return DateFormat('hh:MM aa').format(date).toLowerCase();
 }

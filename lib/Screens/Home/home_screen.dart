@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intertrack/Controller/jobApplications_controller.dart';
 import 'package:intertrack/Screens/Home/JobApplicationWidgets/JobApplicationWidgets.dart';
 import 'package:intertrack/Screens/Home/NewApplicationSheetWidgets/new_job_application_widget.dart';
 import 'package:intertrack/Shared/Shared.dart';
 import 'package:intertrack/Utils/utils.dart';
 
 class HomeScreen extends StatelessWidget {
+  final JobApplicationsController? _jobApplicationsController =
+      Get.put(JobApplicationsController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -13,7 +17,9 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: scaffoldBGColor,
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: Responsive().smallW),
-          child: JobApplicationsList(),
+          child: JobApplicationsList(
+            controller: _jobApplicationsController!,
+          ),
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
