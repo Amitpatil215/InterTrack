@@ -45,8 +45,11 @@ class JobApplicationDetailsScreen extends StatelessWidget {
                         SizedBox(
                           width: Responsive().smallW,
                         ),
-                        Text(
-                          'Application Submitted',
+                        SizedBox(
+                          width: Responsive().width * 0.65,
+                          child: Text(
+                            'Application Submitted',
+                          ),
                         ),
                       ],
                     ),
