@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Screens/Home/home_screen.dart';
+import 'package:intertrack/Screens/JobApplicationDetails/job_application_details_screen.dart';
+import 'package:intertrack/Utils/constant.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: HomeScreen(),
+      routes: {
+        Constant.routeJobApplicationDetails: (ctx) =>
+            JobApplicationDetailsScreen(),
+      },
     );
   }
 }
