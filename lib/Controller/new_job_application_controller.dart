@@ -45,7 +45,7 @@ class NewJobApplicationController extends GetxController {
 
   final Rx<GlobalKey<FormState>> formKey = GlobalKey<FormState>().obs;
 
-  bool onSaved() {
+  JobApplication? onSaved() {
     if (formKey.value?.currentState?.validate() ?? false) {
       formKey.value?.currentState?.save();
 
@@ -54,9 +54,9 @@ class NewJobApplicationController extends GetxController {
         dateTime: pickedApplicationDate.value,
       );
       inspect(jobApplication.value);
-      return true;
+      return jobApplication.value;
     }
-    return false;
+    return jobApplication.value;
   }
 
   //* Job application status

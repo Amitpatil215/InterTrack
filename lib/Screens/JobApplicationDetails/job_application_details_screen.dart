@@ -16,7 +16,9 @@ class JobApplicationDetailsScreen extends StatelessWidget {
     return SafeArea(
       child: Obx(() {
         JobApplication _jobApplication =
-            _jobApplicationsController!.jobApplications[0];
+            _jobApplicationsController!.jobApplications.firstWhere((element) =>
+                element.id ==
+                _jobApplicationsController!.selectedJobApplicationId.value);
         return Scaffold(
           backgroundColor: scaffoldBGColor,
           appBar: AppBar(

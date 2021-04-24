@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:intertrack/Controller/jobApplications_controller.dart';
 import 'package:intertrack/Controller/new_job_application_controller.dart';
 import 'package:intertrack/Screens/Home/NewApplicationSheetWidgets/new_job_application_widget.dart';
 
@@ -9,6 +10,7 @@ import 'package:intertrack/Utils/utils.dart';
 
 class NewJobSheet extends StatelessWidget {
   final _newJobApplicationController = Get.put(NewJobApplicationController());
+  final _jobApplicationsController = Get.put(JobApplicationsController());
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
@@ -31,8 +33,13 @@ class NewJobSheet extends StatelessWidget {
                   Spacer(),
                   ElevatedButton(
                     onPressed: () {
-                      bool _isSaved = _newJobApplicationController!.onSaved();
-                      if (_isSaved) Navigator.of(context).pop();
+                      final _application =
+                          _newJobApplicationController!.onSaved();
+                      if (_application != null) {
+                        _jobApplicationsController!
+                            .appendNewJobApplication(_application);
+                        Navigator.of(context).pop();
+                      }
                     },
                     child: Text(
                       'Save',

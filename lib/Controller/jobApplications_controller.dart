@@ -9,7 +9,7 @@ class JobApplicationsController extends GetxController {
   RxString selectedJobApplicationId = ''.obs;
 
   List<JobApplication> jobApplications = [
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 2; i++)
       JobApplication(
         id: '$i',
         companyName: "Amazon Pvt Ltd",
@@ -34,4 +34,8 @@ class JobApplicationsController extends GetxController {
         ],
       ),
   ].obs;
+
+  void appendNewJobApplication(JobApplication jobApplication) {
+    jobApplications.add(jobApplication);
+  }
 }
