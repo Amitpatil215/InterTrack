@@ -47,7 +47,7 @@ class JobApplicationsList extends StatelessWidget {
                           SizedBox(
                             width: Responsive().smallW,
                           ),
-                          Text('Researching'),
+                          Text('FullTime'),
                         ],
                       ),
                       Row(
@@ -83,7 +83,7 @@ class JobApplicationsList extends StatelessWidget {
                     child: Row(
                       children: [
                         FaIcon(
-                          FontAwesomeIcons.hourglassStart,
+                          FontAwesomeIcons.clock,
                           size: Responsive().width * 0.03,
                         ),
                         SizedBox(width: Responsive().smallW),
@@ -101,7 +101,7 @@ class JobApplicationsList extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            'FullTime',
+                            'Researching',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
