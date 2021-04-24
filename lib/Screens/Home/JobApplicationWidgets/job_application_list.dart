@@ -77,35 +77,39 @@ class JobApplicationsList extends StatelessWidget {
                       color: Colors.blue,
                     ),
                   ),
-                  subtitle: Row(
-                    children: [
-                      FaIcon(
-                        FontAwesomeIcons.hourglassStart,
-                        size: Responsive().width * 0.03,
-                      ),
-                      SizedBox(width: Responsive().smallW),
-                      Text('4'),
-                      SizedBox(width: Responsive().smallW),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Responsive().smallW,
-                          vertical: Responsive().width * 0.005,
+                  subtitle: Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: Responsive().smallW),
+                    child: Row(
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.hourglassStart,
+                          size: Responsive().width * 0.03,
                         ),
-                        decoration: BoxDecoration(
-                          color: scaffoldBGColor,
-                          borderRadius: BorderRadius.circular(
-                            Responsive().smallW,
+                        SizedBox(width: Responsive().smallW),
+                        Text('4'),
+                        SizedBox(width: Responsive().smallW),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: Responsive().smallW,
+                            vertical: Responsive().width * 0.005,
                           ),
-                        ),
-                        child: Text(
-                          'FullTime',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400,
+                          decoration: BoxDecoration(
+                            color: scaffoldBGColor,
+                            borderRadius: BorderRadius.circular(
+                              Responsive().smallW,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                          child: Text(
+                            'FullTime',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
