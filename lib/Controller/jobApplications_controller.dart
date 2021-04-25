@@ -6,6 +6,8 @@ enum eventFrequency { noRepeat, everyWeek }
 
 class JobApplicationsController extends GetxController {
   /// typically used to get more details on tapping one of job using its id
+  /// also used for mode of editing sheet, ifEmpty considered as new application
+  /// if isNotExmpty then considered as in editing mode
   RxString selectedJobApplicationId = ''.obs;
 
   List<JobApplication> jobApplications = [
