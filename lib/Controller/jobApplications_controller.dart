@@ -38,4 +38,9 @@ class JobApplicationsController extends GetxController {
   void appendNewJobApplication(JobApplication jobApplication) {
     jobApplications.add(jobApplication);
   }
+
+  /// Reset selectedJobApplicationId
+  void resetSelectedJobApplicationId() {
+    this.selectedJobApplicationId = ''.obs;
+  }
 }

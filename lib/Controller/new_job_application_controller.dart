@@ -119,4 +119,14 @@ class NewJobApplicationController extends GetxController {
       }
     });
   }
+
+  //* Init all the controllers for editing the job application
+  void initFieldsInSheet(JobApplication jobApplication) {
+    this.jobApplication.value = jobApplication;
+  }
+
+  //* Empty init all the controllers for new job application
+  void resetAllFieldsInSheet() {
+    this.jobApplication = JobApplication().obs;
+  }
 }

@@ -24,7 +24,10 @@ class JobApplicationsList extends StatelessWidget {
               _jobApplicationController.selectedJobApplicationId.value =
                   _jobApplicationController.jobApplications[index].id;
               Navigator.of(context)
-                  .pushNamed(Constant.routeJobApplicationDetails);
+                  .pushNamed(Constant.routeJobApplicationDetails)
+                  .then((value) {
+                _jobApplicationController.resetSelectedJobApplicationId();
+              });
             },
             child: Card(
               shape: RoundedRectangleBorder(

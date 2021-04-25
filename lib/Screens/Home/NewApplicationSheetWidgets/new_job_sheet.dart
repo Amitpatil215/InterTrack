@@ -13,6 +13,15 @@ class NewJobSheet extends StatelessWidget {
   final _jobApplicationsController = Get.put(JobApplicationsController());
   @override
   Widget build(BuildContext context) {
+    if (_jobApplicationsController!.selectedJobApplicationId.isNotEmpty) {
+      print('is not empty');
+      _newJobApplicationController!.initFieldsInSheet(
+        _jobApplicationsController!.jobApplications.firstWhere((element) =>
+            element.id ==
+            _jobApplicationsController!.selectedJobApplicationId.value),
+      );
+    }
+
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: Responsive().height * 0.95),
       child: Padding(
