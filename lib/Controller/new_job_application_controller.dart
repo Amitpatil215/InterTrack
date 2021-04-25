@@ -127,6 +127,6 @@ class NewJobApplicationController extends GetxController {
 
   //* Empty init all the controllers for new job application
   void resetAllFieldsInSheet() {
-    this.jobApplication = JobApplication().obs;
+    this.jobApplication = JobApplication(stages: []).obs;
   }
 }

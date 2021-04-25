@@ -30,7 +30,7 @@ class JobApplication {
     this.dateOfApplication,
     this.statusLabel = ApplicationStatus.Researching,
     this.isApplied = false,
-    this.stages = const [],
+    required this.stages,
   });
 }
 
