@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:intertrack/Model/JobApplication.dart';
+import 'package:intertrack/Model/Model.dart';
 import 'package:intertrack/Utils/constant.dart';
 
 enum eventFrequency { noRepeat, everyWeek }

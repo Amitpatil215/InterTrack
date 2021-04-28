@@ -1,3 +1,4 @@
+import 'package:intertrack/Model/Model.dart';
 import 'package:intertrack/Utils/constant.dart';
 
 class JobApplication {
@@ -31,17 +32,5 @@ class JobApplication {
     this.statusLabel = ApplicationStatus.Researching,
     this.isApplied = false,
     required this.stages,
-  });
-}
-
-class Stage {
-  final String id;
-  final String title;
-  final DateTime? scheduledOn;
-
-  Stage({
-    this.id = '',
-    this.title = '',
-    this.scheduledOn,
   });
 }

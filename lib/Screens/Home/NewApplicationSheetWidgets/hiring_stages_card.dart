@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Controller/new_job_application_controller.dart';
-import 'package:intertrack/Model/JobApplication.dart';
+import 'package:intertrack/Model/Model.dart';
 import 'package:intertrack/Utils/utils.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
