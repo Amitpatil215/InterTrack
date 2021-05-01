@@ -41,6 +41,10 @@ class JobApplicationsController extends GetxController {
     return _jobApplications;
   }
 
+  int getIndexOfJobApplicationFromListById(String id) {
+    return _jobApplications.indexWhere((element) => element.id == id);
+  }
+
   void appendNewJobApplication(JobApplication jobApplication) {
     _jobApplications.add(jobApplication);
   }
@@ -54,6 +58,7 @@ class JobApplicationsController extends GetxController {
         }
       },
     );
+    _jobApplications.refresh();
   }
 
   /// Reset selectedJobApplicationId
