@@ -45,9 +45,16 @@ class NewJobSheet extends StatelessWidget {
                       final _application =
                           _newJobApplicationController!.onSaved();
                       if (_application != null) {
-                        _jobApplicationsController!
-                            .appendNewJobApplication(_application);
-                        Navigator.of(context).pop();
+                        if (_jobApplicationsController!
+                            .selectedJobApplicationId.isNotEmpty) {
+                          _jobApplicationsController!
+                              .editJobApplication(_application);
+                          Navigator.of(context).pop();
+                        } else {
+                          _jobApplicationsController!
+                              .appendNewJobApplication(_application);
+                          Navigator.of(context).pop();
+                        }
                       }
                     },
                     child: Text(

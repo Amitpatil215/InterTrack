@@ -10,7 +10,7 @@ class JobApplicationsController extends GetxController {
   /// if isNotExmpty then considered as in editing mode
   RxString selectedJobApplicationId = ''.obs;
 
-  List<JobApplication> jobApplications = [
+  final RxList<JobApplication> _jobApplications = [
     for (int i = 0; i < 2; i++)
       JobApplication(
         id: '$i',
@@ -37,8 +37,23 @@ class JobApplicationsController extends GetxController {
       ),
   ].obs;
 
+  RxList<JobApplication> get jobApplications {
+    return _jobApplications;
+  }
+
   void appendNewJobApplication(JobApplication jobApplication) {
-    jobApplications.add(jobApplication);
+    _jobApplications.add(jobApplication);
+  }
+
+  void editJobApplication(JobApplication jobApplication) {
+    _jobApplications.forEach(
+      (application) {
+        if (application.id == jobApplication.id) {
+          application = jobApplication;
+          return;
+        }
+      },
+    );
   }
 
   /// Reset selectedJobApplicationId
