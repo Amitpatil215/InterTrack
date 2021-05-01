@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Utils/constant.dart';
@@ -53,10 +51,9 @@ class NewJobApplicationController extends GetxController {
         pickedApplicationTime.value!,
         dateTime: pickedApplicationDate.value,
       );
-      inspect(jobApplication.value);
       return jobApplication.value;
     }
-    return jobApplication.value;
+    return null;
   }
 
   //* Job application status
