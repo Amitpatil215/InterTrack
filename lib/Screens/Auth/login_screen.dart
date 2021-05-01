@@ -8,6 +8,14 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
+          Container(
+            height: Responsive().width * 0.4,
+            width: Responsive().width * 0.4,
+            child: Image.asset(
+              'assets/images/logo.png',
+              color: navy,
+            ),
+          ),
           Spacer(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: Responsive().mediumW),
@@ -32,6 +40,8 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.resolveWith((states) => navy),
                   padding: MaterialStateProperty.resolveWith(
                     (states) => EdgeInsets.symmetric(
                       vertical: Responsive().mediumW,
