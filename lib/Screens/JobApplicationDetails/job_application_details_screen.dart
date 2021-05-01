@@ -90,13 +90,15 @@ class JobApplicationDetailsScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      MoreDetailsInfoCardListTile(
-                        icondata: CupertinoIcons.calendar,
-                        title: 'Application submitted on',
-                        subTitle: formatDate(_jobApplicationsController
-                                ?.jobApplications[_index].dateOfApplication ??
-                            DateTime.now()),
-                      ),
+                      Obx(() {
+                        return MoreDetailsInfoCardListTile(
+                          icondata: CupertinoIcons.calendar,
+                          title: 'Application submitted on',
+                          subTitle: formatDate(_jobApplicationsController
+                                  ?.jobApplications[_index].dateOfApplication ??
+                              DateTime.now()),
+                        );
+                      }),
                       Obx(() {
                         return MoreDetailsInfoCardListTile(
                           icondata: FontAwesomeIcons.checkCircle,
@@ -109,74 +111,78 @@ class JobApplicationDetailsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: _jobApplicationsController
-                    ?.jobApplications[_index].stages.length,
-                itemBuilder: (context, index) => TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.25,
-                  isLast: index ==
-                          _jobApplicationsController!
-                                  .jobApplications[_index].stages.length -
-                              1
-                      ? true
-                      : false,
-                  startChild: SizedBox(
-                    height: Responsive().height * 0.085,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            formatDateMMM(
-                              _jobApplicationsController!
-                                      .jobApplications[_index]
-                                      .stages[index]
-                                      .scheduledOn ??
-                                  DateTime.now(),
+              Obx(() {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: _jobApplicationsController
+                      ?.jobApplications[_index].stages.length,
+                  itemBuilder: (context, index) => TimelineTile(
+                    alignment: TimelineAlign.manual,
+                    lineXY: 0.25,
+                    isLast: index ==
+                            _jobApplicationsController!
+                                    .jobApplications[_index].stages.length -
+                                1
+                        ? true
+                        : false,
+                    startChild: SizedBox(
+                      height: Responsive().height * 0.085,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              formatDateMMM(
+                                _jobApplicationsController!
+                                        .jobApplications[_index]
+                                        .stages[index]
+                                        .scheduledOn ??
+                                    DateTime.now(),
+                              ),
                             ),
-                          ),
-                          Text(
-                            formatDateDD(
-                              _jobApplicationsController!
-                                      .jobApplications[_index]
-                                      .stages[index]
-                                      .scheduledOn ??
-                                  DateTime.now(),
+                            Text(
+                              formatDateDD(
+                                _jobApplicationsController!
+                                        .jobApplications[_index]
+                                        .stages[index]
+                                        .scheduledOn ??
+                                    DateTime.now(),
+                              ),
+                              style: TextStyle(
+                                fontSize: Responsive().extraLargeW,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                            style: TextStyle(
-                              fontSize: Responsive().extraLargeW,
-                              fontWeight: FontWeight.bold,
+                          ],
+                        ),
+                      ),
+                    ),
+                    endChild: SizedBox(
+                      height: Responsive().height * 0.085,
+                      child: Center(
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: Responsive().smallW,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: Responsive().width * 0.65,
+                              child: Text(
+                                _jobApplicationsController!
+                                    .jobApplications[_index]
+                                    .stages[index]
+                                    .title,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  endChild: SizedBox(
-                    height: Responsive().height * 0.085,
-                    child: Center(
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: Responsive().smallW,
-                          ),
-                          SizedBox(
-                            width: Responsive().width * 0.65,
-                            child: Text(
-                              _jobApplicationsController!
-                                  .jobApplications[_index].stages[index].title,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                );
+              }),
             ],
           ),
         ),
