@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "764804289445",
+    "project_id": "inter-track",
+    "storage_bucket": "inter-track.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764804289445:android:a1e456555f0bfa34f9ce4c",
+        "android_client_info": {
+          "package_name": "com.coera.intertrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764804289445-sobp457lf7t1fjkur1ajlmblduj32uk3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.coera.intertrack",
+            "certificate_hash": "8f810f8c13632807080f417d0a124aea7f388750"
+          }
+        },
+        {
+          "client_id": "764804289445-2m8fsiitg3beqv12oicotcddm6gc1nil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJXgMCNLlQ5CSG1mNTK4Ho5YeHZ9xK744"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764804289445-2m8fsiitg3beqv12oicotcddm6gc1nil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
