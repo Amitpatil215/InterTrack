@@ -11,6 +11,7 @@ class DebugScreen extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             await _authController?.logout();
+            Navigator.of(context).pop();
           },
           child: Text('Log Out'),
         ),
