@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:intertrack/Controller/auth_controller.dart';
 import 'package:intertrack/Screens/Auth/login_screen.dart';
+import 'package:intertrack/Screens/Home/home_screen.dart';
 import 'package:intertrack/Screens/JobApplicationDetails/job_application_details_screen.dart';
 import 'package:intertrack/Utils/constant.dart';
 import 'package:intertrack/Utils/pallets.dart';
@@ -22,6 +24,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  final AuthController? _authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -30,7 +33,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: StreamBuilder(
+        stream: _authController?.currentUser,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return HomeScreen();
+          } else
+            return LoginScreen();
+        },
+      ),
       routes: {
         Constant.routeJobApplicationDetails: (ctx) =>
             JobApplicationDetailsScreen(),
