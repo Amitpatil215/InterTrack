@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Controller/auth_controller.dart';
+import 'package:intertrack/Debug/debug_screen.dart';
 import 'package:intertrack/Screens/Auth/login_screen.dart';
 import 'package:intertrack/Screens/Home/home_screen.dart';
 import 'package:intertrack/Screens/JobApplicationDetails/job_application_details_screen.dart';
@@ -45,6 +46,8 @@ class MyApp extends StatelessWidget {
       routes: {
         Constant.routeJobApplicationDetails: (ctx) =>
             JobApplicationDetailsScreen(),
+            Constant.routeDebug: (ctx) =>
+            DebugScreen(),
       },
     );
   }

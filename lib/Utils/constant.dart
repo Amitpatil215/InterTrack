@@ -1,6 +1,7 @@
 class Constant {
   /// Naviagtion routs
   static const routeJobApplicationDetails = '/jobApplicationDetails';
+  static const routeDebug = '/debugScreen';
 }
 
 //* Enums

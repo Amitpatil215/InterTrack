@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Controller/jobApplications_controller.dart';
 import 'package:intertrack/Controller/new_job_application_controller.dart';
+import 'package:intertrack/Debug/DebugWidget/DebugWidget.dart';
 import 'package:intertrack/Screens/Home/JobApplicationWidgets/JobApplicationWidgets.dart';
 import 'package:intertrack/Screens/Home/NewApplicationSheetWidgets/new_job_application_widget.dart';
 import 'package:intertrack/Shared/Shared.dart';
@@ -20,8 +22,15 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: scaffoldBGColor,
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: Responsive().smallW),
-          child: JobApplicationsList(
-            controller: _jobApplicationsController!,
+          child: Column(
+            children: [
+              if (kDebugMode) NavigateToDebugButton(),
+              Expanded(
+                child: JobApplicationsList(
+                  controller: _jobApplicationsController!,
+                ),
+              ),
+            ],
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
