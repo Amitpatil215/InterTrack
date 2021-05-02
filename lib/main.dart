@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,7 @@ import 'package:intertrack/Screens/JobApplicationDetails/job_application_details
 import 'package:intertrack/Utils/constant.dart';
 import 'package:intertrack/Utils/pallets.dart';
 
-void main() {
+void main() async {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       systemNavigationBarColor: scaffoldBGColor, // navigation bar color
@@ -15,6 +16,8 @@ void main() {
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
