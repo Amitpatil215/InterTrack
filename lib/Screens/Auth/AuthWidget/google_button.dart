@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Controller/auth_controller.dart';
+import 'package:intertrack/Controller/user_controller.dart';
 import 'package:intertrack/Utils/utils.dart';
 
 class GoogleButton extends StatelessWidget {
@@ -15,9 +16,11 @@ class GoogleButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: Responsive().mediumW),
       child: Center(
         child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             final _authController = Get.put(AuthController());
-            _authController?.logInGoogle();
+            final _userController = Get.put(UserController());
+            final _user = await _authController?.logInGoogle();
+            await _userController?.addUser(_user);
           },
           child: Row(
             children: [

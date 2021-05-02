@@ -8,7 +8,7 @@ class AuthController extends GetxController {
   final _googleSignIn = GoogleSignIn(scopes: ['email']);
   Stream<User?> get currentUser => _authService.currentUser;
 
-  Future logInGoogle() async {
+  Future<User?> logInGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser != null) {
@@ -26,6 +26,7 @@ class AuthController extends GetxController {
       }
     } catch (error) {
       print(error);
+      return null;
     }
   }
 
