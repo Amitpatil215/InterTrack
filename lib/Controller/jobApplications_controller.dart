@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Model/Model.dart';
+import 'package:intertrack/Services/job_application_service.dart';
 import 'package:intertrack/Utils/constant.dart';
 
 enum eventFrequency { noRepeat, everyWeek }
@@ -9,7 +11,7 @@ class JobApplicationsController extends GetxController {
   /// also used for mode of editing sheet, ifEmpty considered as new application
   /// if isNotExmpty then considered as in editing mode
   RxString selectedJobApplicationId = ''.obs;
-
+  final JobApplicationService _jobApplicationService = JobApplicationService();
   final RxList<JobApplication> _jobApplications = [
     for (int i = 0; i < 2; i++)
       JobApplication(
@@ -49,7 +51,14 @@ class JobApplicationsController extends GetxController {
       return null;
   }
 
-  void appendNewJobApplication(JobApplication jobApplication) {
+  void appendNewJobApplication(JobApplication jobApplication) async {
+    final _uid = FirebaseAuth.instance.currentUser?.uid;
+    if (_uid != null) {
+      await _jobApplicationService.addJobApplication(
+        jobApplication,
+        _uid,
+      );
+    }
     _jobApplications.add(jobApplication);
   }
 
