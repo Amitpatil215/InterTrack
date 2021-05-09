@@ -23,6 +23,7 @@ class AuthController extends GetxController {
         print(result.user?.displayName);
         print(result.user?.email);
         print(result.user?.photoURL);
+        return result.user;
       }
     } catch (error) {
       print(error);
