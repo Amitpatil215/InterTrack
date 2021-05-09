@@ -23,7 +23,6 @@ class JobApplicationDetailsScreen extends StatelessWidget {
       final int? _index = _jobApplicationsController!
           .getIndexOfJobApplicationFromListById(
               _selectedApplicationId?.value ?? '');
-      print(_index);
       return SafeArea(
         child: Scaffold(
           backgroundColor: scaffoldBGColor,

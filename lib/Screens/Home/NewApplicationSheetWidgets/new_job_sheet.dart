@@ -14,7 +14,6 @@ class NewJobSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (_jobApplicationsController!.selectedJobApplicationId.isNotEmpty) {
-      print('is not empty');
       _newJobApplicationController!.initFieldsInSheet(
         _jobApplicationsController!.jobApplications.firstWhere((element) =>
             element.id ==
