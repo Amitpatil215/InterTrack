@@ -78,11 +78,11 @@ class JobApplicationsList extends StatelessWidget {
                         ),
                       ],
                     ),
-                    trailing: IconButton(
-                        icon: Icon(
-                          Icons.bookmark_border_outlined,
-                        ),
-                        onPressed: () {}),
+                    // trailing: IconButton(
+                    //     icon: Icon(
+                    //       Icons.bookmark_border_outlined,
+                    //     ),
+                    //     onPressed: () {}),
                   ),
                   ListTile(
                     title: Text(
