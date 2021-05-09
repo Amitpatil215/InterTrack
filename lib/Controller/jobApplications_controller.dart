@@ -81,16 +81,14 @@ class JobApplicationsController extends GetxController {
     }
   }
 
-  void editJobApplication(JobApplication jobApplication) {
-    _jobApplications.forEach(
-      (application) {
-        if (application.id == jobApplication.id) {
-          application = jobApplication;
-          return;
-        }
-      },
-    );
-    _jobApplications.refresh();
+  void editJobApplication(JobApplication jobApplication) async {
+    try {
+      await _jobApplicationService.editJobApplication(
+        jobApplication,
+      );
+    } catch (er) {
+      print(er);
+    }
   }
 
   void deleteJobApplicationById(String id) {

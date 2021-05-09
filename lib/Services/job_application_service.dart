@@ -17,4 +17,11 @@ class JobApplicationService {
         .where('userId', isEqualTo: userId)
         .snapshots();
   }
+
+  Future<void> editJobApplication(JobApplication jobApplication) async {
+    return _firebaseFirestore
+        .collection('applications')
+        .doc(jobApplication.id)
+        .update(jobApplication.toJson());
+  }
 }
