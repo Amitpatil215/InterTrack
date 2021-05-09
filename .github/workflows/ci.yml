@@ -47,4 +47,4 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter clean
-      - run: flutter build apk --no-sound-null-safety
+      - run: flutter build apk --flavor dev
