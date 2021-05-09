@@ -91,9 +91,16 @@ class JobApplicationsController extends GetxController {
     }
   }
 
-  void deleteJobApplicationById(String id) {
-    final int? _index = getIndexOfJobApplicationFromListById(id);
-    if (_index != null) _jobApplications.removeAt(_index);
+  void deleteJobApplicationById(String id) async {
+    if (id.isEmpty) return;
+
+    try {
+      await _jobApplicationService.deleteJobApplication(
+        id,
+      );
+    } catch (er) {
+      print(er);
+    }
   }
 
   /// Reset selectedJobApplicationId

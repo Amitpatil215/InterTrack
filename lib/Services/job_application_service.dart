@@ -15,6 +15,7 @@ class JobApplicationService {
     return _firebaseFirestore
         .collection('applications')
         .where('userId', isEqualTo: userId)
+        .where('isDeleted', isEqualTo: false)
         .snapshots();
   }
 
@@ -23,5 +24,12 @@ class JobApplicationService {
         .collection('applications')
         .doc(jobApplication.id)
         .update(jobApplication.toJson());
+  }
+
+  Future<void> deleteJobApplication(String jobApplicationId) async {
+    return _firebaseFirestore
+        .collection('applications')
+        .doc(jobApplicationId)
+        .update({'isDeleted': true});
   }
 }

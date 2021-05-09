@@ -17,6 +17,7 @@ class JobApplication {
   /// e.g. under review
   ApplicationStatus statusLabel;
   bool isApplied;
+  bool isDeleted;
 
   /// e.g. phone screening
   final List<Stage> stages;
@@ -33,6 +34,7 @@ class JobApplication {
     this.dateOfApplication,
     this.statusLabel = ApplicationStatus.Researching,
     this.isApplied = false,
+    this.isDeleted = false,
     required this.stages,
   });
 
@@ -58,6 +60,7 @@ JobApplication _$JobApplicationFromJson(Map<String, dynamic> json, String id) {
         : DateTime.parse(json['dateOfApplication'] as String),
     statusLabel: _$enumDecode(_$ApplicationStatusEnumMap, json['statusLabel']),
     isApplied: json['isApplied'] as bool,
+    isDeleted: json['isDeleted'] as bool,
     stages: (json['stages'] as List<dynamic>)
         .map((e) => Stage.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -77,6 +80,7 @@ Map<String, dynamic> _$JobApplicationToJson(JobApplication instance) =>
       'dateOfApplication': instance.dateOfApplication?.toIso8601String(),
       'statusLabel': _$ApplicationStatusEnumMap[instance.statusLabel],
       'isApplied': instance.isApplied,
+      'isDeleted': instance.isDeleted,
       'stages': instance.stages.map((e) => e.toJson()).toList(),
     };
 
