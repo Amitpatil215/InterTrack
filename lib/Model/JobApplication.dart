@@ -36,14 +36,14 @@ class JobApplication {
     required this.stages,
   });
 
-  factory JobApplication.fromJson(Map<String, dynamic> item) =>
-      _$JobApplicationFromJson(item);
+  factory JobApplication.fromJson(Map<String, dynamic> item, String id) =>
+      _$JobApplicationFromJson(item, id);
   Map<String, dynamic> toJson() => _$JobApplicationToJson(this);
 }
 
-JobApplication _$JobApplicationFromJson(Map<String, dynamic> json) {
+JobApplication _$JobApplicationFromJson(Map<String, dynamic> json, String id) {
   return JobApplication(
-    id: json['id'] as String,
+    id: id,
     userId: json['userId'] as String,
     companyName: json['companyName'] as String,
     referenceUrl: json['referenceUrl'] as String,

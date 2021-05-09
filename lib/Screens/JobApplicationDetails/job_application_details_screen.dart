@@ -20,9 +20,10 @@ class JobApplicationDetailsScreen extends StatelessWidget {
     final _selectedApplicationId =
         _jobApplicationsController?.selectedJobApplicationId;
     return Obx(() {
-      int? _index = _jobApplicationsController!
+      final int? _index = _jobApplicationsController!
           .getIndexOfJobApplicationFromListById(
               _selectedApplicationId?.value ?? '');
+      print(_index);
       return SafeArea(
         child: Scaffold(
           backgroundColor: scaffoldBGColor,

@@ -58,7 +58,8 @@ class JobApplicationsController extends GetxController {
         _jobApplicationService.getAllJobApplications(_uid!).listen((event) {
           _jobApplications.clear();
           event.docs.forEach((element) {
-            _jobApplications.add(JobApplication.fromJson(element.data()));
+            _jobApplications
+                .add(JobApplication.fromJson(element.data(), element.id));
           });
         });
       } catch (er) {
