@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "754021206085",
+    "project_id": "inter-track-testing",
+    "storage_bucket": "inter-track-testing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754021206085:android:83fc311560398390d0bb2c",
+        "android_client_info": {
+          "package_name": "com.coera.intertrack_testing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754021206085-shk3h44s3puuchijasu17cveg6enaaa2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.coera.intertrack_testing",
+            "certificate_hash": "8f810f8c13632807080f417d0a124aea7f388750"
+          }
+        },
+        {
+          "client_id": "754021206085-51bud5euqki97fl2f3o97obu2dafpi52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKQt9W9f7aEiS1Qd7wSao8UH6iiOBv2vY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "754021206085-51bud5euqki97fl2f3o97obu2dafpi52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

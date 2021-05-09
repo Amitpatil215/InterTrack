@@ -48,6 +48,24 @@ android {
         versionName flutterVersionName
     }
 
+    flavorDimensions "app"
+    productFlavors {
+
+        dev {
+            dimension "app"
+            applicationId "com.coera.intertrack_testing"
+            versionCode 1
+            versionName "1.0"
+        }
+
+        prod {
+            dimension "app"
+            applicationId "com.coera.intertrack"
+            versionCode 1
+            versionName "1.0"
+        }
+    }
+
     signingConfigs {
        release {
            keyAlias keystoreProperties['keyAlias']
