@@ -3,6 +3,7 @@ import 'package:intertrack/Utils/constant.dart';
 
 class JobApplication {
   final String id;
+  String userId;
   String companyName;
   final String referenceUrl;
   final String imageUrl;
@@ -22,6 +23,7 @@ class JobApplication {
 
   JobApplication({
     this.id = '',
+    this.userId = '',
     this.companyName = '',
     this.referenceUrl = '',
     this.position = '',
@@ -42,6 +44,7 @@ class JobApplication {
 JobApplication _$JobApplicationFromJson(Map<String, dynamic> json) {
   return JobApplication(
     id: json['id'] as String,
+    userId: json['userId'] as String,
     companyName: json['companyName'] as String,
     referenceUrl: json['referenceUrl'] as String,
     position: json['position'] as String,
@@ -64,6 +67,7 @@ JobApplication _$JobApplicationFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$JobApplicationToJson(JobApplication instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'userId': instance.userId,
       'companyName': instance.companyName,
       'referenceUrl': instance.referenceUrl,
       'imageUrl': instance.imageUrl,

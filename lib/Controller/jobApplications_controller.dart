@@ -11,6 +11,7 @@ class JobApplicationsController extends GetxController {
   /// also used for mode of editing sheet, ifEmpty considered as new application
   /// if isNotExmpty then considered as in editing mode
   RxString selectedJobApplicationId = ''.obs;
+  final _uid = FirebaseAuth.instance.currentUser?.uid;
   final JobApplicationService _jobApplicationService = JobApplicationService();
   final RxList<JobApplication> _jobApplications = [
     for (int i = 0; i < 2; i++)
@@ -51,15 +52,32 @@ class JobApplicationsController extends GetxController {
       return null;
   }
 
-  void appendNewJobApplication(JobApplication jobApplication) async {
-    final _uid = FirebaseAuth.instance.currentUser?.uid;
+  Future<void> getAllJobApplications() async {
     if (_uid != null) {
-      await _jobApplicationService.addJobApplication(
-        jobApplication,
-        _uid,
-      );
+      try {
+        _jobApplicationService.getAllJobApplications(_uid!).listen((event) {
+          _jobApplications.clear();
+          event.docs.forEach((element) {
+            _jobApplications.add(JobApplication.fromJson(element.data()));
+          });
+        });
+      } catch (er) {
+        print(er);
+      }
     }
-    _jobApplications.add(jobApplication);
+  }
+
+  void appendNewJobApplication(JobApplication jobApplication) async {
+    if (_uid != null) {
+      jobApplication.userId = _uid!;
+      try {
+        await _jobApplicationService.addJobApplication(
+          jobApplication,
+        );
+      } catch (er) {
+        print(er);
+      }
+    }
   }
 
   void editJobApplication(JobApplication jobApplication) {

@@ -10,11 +10,26 @@ import 'package:intertrack/Screens/Home/NewApplicationSheetWidgets/new_job_appli
 import 'package:intertrack/Shared/Shared.dart';
 import 'package:intertrack/Utils/utils.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final JobApplicationsController? _jobApplicationsController =
       Get.put(JobApplicationsController());
+
   final NewJobApplicationController? _newJobApplicationController =
       Get.put(NewJobApplicationController());
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Starting stream for getting all the job applications of perticular user
+    _jobApplicationsController?.getAllJobApplications();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
