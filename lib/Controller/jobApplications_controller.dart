@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:intertrack/Model/Model.dart';
 import 'package:intertrack/Services/job_application_service.dart';
-import 'package:intertrack/Utils/constant.dart';
 
 enum eventFrequency { noRepeat, everyWeek }
 
