@@ -1,16 +1,18 @@
-# InterTrack
+# Intertrack
 
-Better manage your job applications
+Download [here](https://drive.google.com/file/d/1TTRCYFj0x3QWmrFLDN7X5t7_2RqbBGrd/view?usp=sharing)
 
-## Getting Started
+Track all your upcoming and ongoing interview process seamlessly
 
-This project is a starting point for a Flutter application.
+- Add multiple companies
+- Status of application
+- Start End Date
+- Phases of interview
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
+<img src="https://user-images.githubusercontent.com/54329870/120926740-d0f8f680-c6fb-11eb-8327-63f81fcf13d2.png" height=400> <img src="https://user-images.githubusercontent.com/54329870/120926742-d35b5080-c6fb-11eb-9e32-47531e705b4d.png" height=400> <img src="https://user-images.githubusercontent.com/54329870/120926744-d3f3e700-c6fb-11eb-96c9-192013a826fc.png" height=400> <img src="https://user-images.githubusercontent.com/54329870/120926745-d5251400-c6fb-11eb-90be-6fe8844d89be.png" height=400>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Please make sure to update tests as appropriate.
