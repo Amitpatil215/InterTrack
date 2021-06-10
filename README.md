@@ -19,9 +19,7 @@ Download APK [here](https://drive.google.com/file/d/1TTRCYFj0x3QWmrFLDN7X5t7_2Rq
 - Phases of interview (Telephonic, Bar raiser)
 
 ## Gallery
-<img src="https://user-images.githubusercontent.com/54329870/120926740-d0f8f680-c6fb-11eb-8327-63f81fcf13d2.png" height=400>
-<img src="https://user-images.githubusercontent.com/54329870/120926742-d35b5080-c6fb-11eb-9e32-47531e705b4d.png" height=400>
-<img src="https://user-images.githubusercontent.com/54329870/120926744-d3f3e700-c6fb-11eb-96c9-192013a826fc.png" height=400>
+<img src="https://user-images.githubusercontent.com/54329870/120926740-d0f8f680-c6fb-11eb-8327-63f81fcf13d2.png" height=400> <img src="https://user-images.githubusercontent.com/54329870/120926742-d35b5080-c6fb-11eb-9e32-47531e705b4d.png" height=400> <img src="https://user-images.githubusercontent.com/54329870/120926744-d3f3e700-c6fb-11eb-96c9-192013a826fc.png" height=400>
 
 ## Motivation Behind this project
 We are frequently overwhelmed by the number of interviews applied for on each portal, and we lose track of them at times.
