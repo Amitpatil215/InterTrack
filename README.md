@@ -41,7 +41,10 @@ As a result, preparing around interview dates is the greatest bet an interviewee
 Intertrack is a fully open-source project, and we welcome contributions. If you found a bug feel free to open an [issue](https://github.com/Amitpatil215/InterTrack/issues/new/choose).
 
 ## License & Copyright
-MIT
+
+MIT License
+
+Copyright (c) 2021 Amit Patil
 
 <!-- Links -->
 
